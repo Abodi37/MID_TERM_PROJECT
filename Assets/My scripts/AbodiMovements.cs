@@ -7,7 +7,6 @@ public class AbodiMovements : MonoBehaviour
     [Header("Movements")]
     public float speed = 4f; 
      public float currentSpeed = 8f;
-     public float jumpForce = 8f;
      public float gravity = -20f;
 
      [Header("StaminaLogic")]
@@ -23,6 +22,8 @@ public class AbodiMovements : MonoBehaviour
     public LayerMask groundMask;
     public float groundDistance = 1.1f;
 
+    [Header("Smooth Jump")]
+    public float jumpForce = 8f;
     public float liftDuration = 0.2f;
     public float liftTimer; 
 
