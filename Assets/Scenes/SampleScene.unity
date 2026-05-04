@@ -923,16 +923,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbodiMovements
   myPlayer: {fileID: 1657534890}
-  speed: 10
-  grounded: 0
+  speed: 4
+  currentSpeed: 8
+  jumpForce: 8
   gravity: -9.81
+  stamina: 100
+  maxStamina: 100
+  drainRate: 20
+  refillRate: 15
+  canSprint: 1
+  grounded: 0
   velocity: {x: 0, y: 0, z: 0}
-  currentSpeed: 20
-  jumpForce: 20
   groundMask:
     serializedVersion: 2
     m_Bits: 8
   groundDistance: 1.1
+  liftDuration: 0.1
+  liftTimer: 0
 --- !u!1 &2015307322
 GameObject:
   m_ObjectHideFlags: 0
