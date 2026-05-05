@@ -24,7 +24,7 @@ public class AbodiMovements : MonoBehaviour
 
     [Header("Smooth Jump")]
     public float jumpForce = 8f;
-    public float liftDuration = 0.2f;
+    public float liftDuration = 0.1f;
     public float liftTimer; 
 
     void Update()
@@ -51,7 +51,7 @@ public class AbodiMovements : MonoBehaviour
             if (stamina < maxStamina)
                 stamina += refillRate * Time.deltaTime;
 
-            if (stamina >= 20f) canSprint = true;
+            if (stamina >= 100f) canSprint = true;
         }
 
         if (grounded && velocity.y < 0)
