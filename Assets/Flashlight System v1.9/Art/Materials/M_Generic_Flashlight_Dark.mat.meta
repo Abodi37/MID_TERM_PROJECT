@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: f24a366480c71dd4ca73bc68efc81c07
+timeCreated: 1560033977
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 158179
+  packageName: Flashlight System Realistic
+  packageVersion: 1.9
+  assetPath: Assets/Flashlight System v1.9/Art/Materials/M_Generic_Flashlight_Dark.mat
+  uploadId: 815212

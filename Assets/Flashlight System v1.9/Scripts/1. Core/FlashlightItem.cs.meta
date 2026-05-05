@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 268f47c1ece706b47821499fbb474f2a
+timeCreated: 1560871191
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 158179
+  packageName: Flashlight System Realistic
+  packageVersion: 1.9
+  assetPath: Assets/Flashlight System v1.9/Scripts/1. Core/FlashlightItem.cs
+  uploadId: 815212

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b25ab508c46e5c4448678d723c7c2080
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 158179
+  packageName: Flashlight System Realistic
+  packageVersion: 1.9
+  assetPath: Assets/Flashlight System v1.9/Scripts/ScriptableObjects/Sound.cs
+  uploadId: 815212
