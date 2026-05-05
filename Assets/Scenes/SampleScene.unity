@@ -925,7 +925,6 @@ MonoBehaviour:
   myPlayer: {fileID: 1657534890}
   speed: 4
   currentSpeed: 8
-  jumpForce: 8
   gravity: -9.81
   stamina: 100
   maxStamina: 100
@@ -938,6 +937,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundDistance: 1.1
+  jumpForce: 8
   liftDuration: 0.1
   liftTimer: 0
 --- !u!1 &2015307322

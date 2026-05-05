@@ -27,7 +27,7 @@ public class AbodiMovements : MonoBehaviour
     public float liftDuration = 0.2f;
     public float liftTimer; 
 
-    void FixedUpdate()
+    void Update()
     {
         float Horizontal = Input.GetAxis("Horizontal");
         float Vertical = Input.GetAxis("Vertical");
