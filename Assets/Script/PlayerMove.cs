@@ -16,7 +16,7 @@ public class AdvancedPlayerController : MonoBehaviour
     private float standingHeight;
     private Vector3 standingCenter;
     private bool isCrouching;
-    private bool wantsToCrouch; // „ €Ì— ÃœÌœ ·‰Ÿ«„ «· »œÌ· (Toggle)
+    private bool wantsToCrouch; 
 
     [Header("Stamina Settings")]
     public float maxStamina = 100f;
@@ -58,8 +58,7 @@ public class AdvancedPlayerController : MonoBehaviour
         }
         else
         {
-            //  ‰»ÌÂ ﬁÊÌ ›Ì Õ«· ‰”Ì  —»ÿ «·ﬂ«„Ì—«
-            Debug.LogError("Ì« «»Ê œ«Õ„: ·„  ﬁ„ »—»ÿ «·ﬂ«„Ì—« ›Ì «·‹ Inspector! ·‰  ‘⁄— »«· œ‰Ìﬁ »œÊ‰Â«.");
+            
         }
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -91,34 +90,33 @@ public class AdvancedPlayerController : MonoBehaviour
 
     private void HandleCrouch()
     {
-        // 1. ‰Ÿ«„ «· »œÌ· (Toggle): ÷€ÿ… Ê«Õœ… ·· œ‰Ìﬁ° Ê÷€ÿ… ··ÊﬁÊ› («·¬‰ Ìœ⁄„ “— Ctrl «·√Ì”— ÊÕ—› C)
+        
         if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
         {
             wantsToCrouch = !wantsToCrouch;
-            Debug.Log("Õ«·… «· œ‰Ìﬁ «·„ÿ·Ê»… «·¬‰: " + wantsToCrouch);
         }
 
-        // 2. «· Õﬁﬁ „‰ ÊÃÊœ ”ﬁ› Ì„‰⁄ «·ÊﬁÊ›
+        
         if (!wantsToCrouch && isCrouching)
         {
             Vector3 rayStart = transform.position + Vector3.up * (controller.center.y + (standingHeight / 2f) + 0.1f);
             if (Physics.Raycast(rayStart, Vector3.up, 0.5f))
             {
                 wantsToCrouch = true;
-                Debug.Log("·«  ” ÿÌ⁄ «·ÊﬁÊ›° ÌÊÃœ ”ﬁ› ›Êﬁﬂ!");
+                
             }
         }
 
         isCrouching = wantsToCrouch;
 
-        // 3.  ÿ»Ìﬁ «·‰“Ê· Ê«·’⁄Êœ «·”·”
+        
         float targetHeight = isCrouching ? crouchHeight : standingHeight;
         float targetCenterY = isCrouching ? standingCenter.y - ((standingHeight - crouchHeight) / 2f) : standingCenter.y;
 
         controller.height = Mathf.Lerp(controller.height, targetHeight, Time.deltaTime * crouchTransitionSpeed);
         controller.center = Vector3.Lerp(controller.center, new Vector3(standingCenter.x, targetCenterY, standingCenter.z), Time.deltaTime * crouchTransitionSpeed);
 
-        // 4. ≈‰“«· «·ﬂ«„Ì—« ·ﬂÌ  ‘⁄— »«· œ‰Ìﬁ ›⁄·Ì«
+        
         if (playerCamera != null)
         {
             float targetCamPosY = isCrouching ? originalCameraPosition.y - (standingHeight - crouchHeight) : originalCameraPosition.y;
