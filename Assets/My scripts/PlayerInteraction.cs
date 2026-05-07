@@ -4,19 +4,18 @@ using TMPro; // Add this if using TextMeshPro
 public class PlayerInteraction : MonoBehaviour
 {
     public float interactRange = 3f;
-    public GameObject interactUI; // Drag your "Press E" Text object here
-    public FlashlightAttack flashlightScript; // Drag your Flashlight script here
+    public GameObject interactUI;
+    public FlashlightAttack flashlightScript;
+    public PlayerStats playerStats;
 
     void Update()
     {
         RaycastHit hit;
-        // Shoot a ray from the center of the screen
         if (Physics.Raycast(transform.position, transform.forward, out hit, interactRange))
         {
-            // If we hit a battery
             if (hit.collider.CompareTag("Battery"))
             {
-                interactUI.SetActive(true); // Show "Press E"
+                interactUI.SetActive(true);
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -25,14 +24,25 @@ public class PlayerInteraction : MonoBehaviour
                     interactUI.SetActive(false);
                 }
             }
+            else if (hit.collider.CompareTag("Pill"))
+            {
+                interactUI.SetActive(true);
+
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                    playerStats.pillInventory++;
+                    Destroy(hit.collider.gameObject);
+                    interactUI.SetActive(false);
+                }
+            }
             else
             {
-                interactUI.SetActive(false); // Hide if looking at something else
+                interactUI.SetActive(false);
             }
         }
         else
         {
-            interactUI.SetActive(false); // Hide if looking at nothing
+            interactUI.SetActive(false);
         }
     }
 }

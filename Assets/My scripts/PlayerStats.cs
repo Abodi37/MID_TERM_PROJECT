@@ -17,6 +17,9 @@ public class PlayerStats : MonoBehaviour
     public Image healthBarImage;
     public Image sanityBarImage;
 
+    [Header("Prompt UI")]
+    public GameObject healPromptUI;
+
 
     public EnemyManager enemyManager;
 
@@ -44,7 +47,16 @@ public class PlayerStats : MonoBehaviour
         {
             Heal();
         }
-        
+
+        if (health <= 30f && pillInventory > 0)
+        {
+            healPromptUI.SetActive(true);
+        }
+        else
+        {
+            healPromptUI.SetActive(false);
+        }
+
         healthBarImage.fillAmount = health / 100f;
         sanityBarImage.fillAmount = sanity / 100f;
     }
@@ -53,12 +65,10 @@ public class PlayerStats : MonoBehaviour
     {
         health = 100f;
         pillInventory--;
-        Debug.Log("Healed! Pills left: " + pillInventory);
     }
 
     void Die()
     {
         Debug.Log("Player has died.");
-        // Reload scene or show Game Over UI
     }
 }

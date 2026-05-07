@@ -1,19 +1,19 @@
 using UnityEngine;
 
-public class BatteryPickup : MonoBehaviour
+public class HealPickup : MonoBehaviour
 {
     public float pickupRange = 3f;
-    public string pickupMessage = "Press 'E' to pick up Battery";
+    public string pickupMessage = "Press 'E' to pick up Pill";
     private bool isPlayerNearby = false;
 
     void Update()
     {
         if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
         {
-            FlashlightAttack player = FindFirstObjectByType<FlashlightAttack>();
+            PlayerStats player = FindFirstObjectByType<PlayerStats>();
             if (player != null)
             {
-                player.batteryInventory++;
+                player.pillInventory++;
                 Destroy(gameObject);
             }
         }
