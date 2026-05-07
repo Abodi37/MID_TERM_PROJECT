@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class PlayerStats : MonoBehaviour
     public float baseSanityDrop = 2f;
     public float sanityRegenRate = 1f;
     public float damageRateAtZeroSanity = 5f;
+
+    [Header("UI Images")]
+    public Image healthBarImage;
+    public Image sanityBarImage;
+
 
     public EnemyManager enemyManager;
 
@@ -38,6 +44,9 @@ public class PlayerStats : MonoBehaviour
         {
             Heal();
         }
+        
+        healthBarImage.fillAmount = health / 100f;
+        sanityBarImage.fillAmount = sanity / 100f;
     }
 
     void Heal()
