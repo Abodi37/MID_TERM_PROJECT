@@ -1771,6 +1771,19 @@ MonoBehaviour:
         isBuiltIn: 1
         script: {fileID: 0}
         hasToggle: 1
+      - displayName: FbxPrefab
+        name: UnityEngine.Formats.Fbx.Exporter.FbxPrefab, Unity.Formats.Fbx.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        shown: 0
+        excluded: 0
+        isBuiltIn: 1
+        script: {fileID: 0}
+        hasToggle: 1
       - displayName: FlareLayer
         name: UnityEngine.FlareLayer, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
@@ -5649,4 +5662,4 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: 39c86548e94bdc84f83fcb9137a7596e, type: 3}
         hasToggle: 1
     unityVersion: 6000.4.5f1
-    unityCount: 384
+    unityCount: 385
