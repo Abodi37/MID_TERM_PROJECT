@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,9 @@ public class FlashlightAttack : MonoBehaviour
 
     [Header("UI Image")]
     public Image batteryBarImage;
+
+    [Header("Script References")]
+    public PlayerStats playerstats;
 
 
     void Update()
@@ -65,6 +69,8 @@ public class FlashlightAttack : MonoBehaviour
         }
 
         batteryBarImage.fillAmount = batteryLevel / 100f;
+        
+        if (playerstats.isDead) return;
     }
 
     void PerformAttack()

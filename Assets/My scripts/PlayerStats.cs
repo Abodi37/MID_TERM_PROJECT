@@ -1,5 +1,8 @@
 using UnityEngine;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using Unity.Cinemachine;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -20,8 +23,20 @@ public class PlayerStats : MonoBehaviour
     [Header("Prompt UI")]
     public GameObject healPromptUI;
 
+    [Header("Death")]
+    public GameObject deathScreenUI;
+    public bool isDead = false;
+
+    [Header("Camera")]
+    public CinemachineCamera virtualCamera;
 
     public EnemyManager enemyManager;
+
+    void Start()
+    {
+        isDead = false;
+        Time.timeScale = 1f;
+    }
 
     void Update()
     {
@@ -59,6 +74,8 @@ public class PlayerStats : MonoBehaviour
 
         healthBarImage.fillAmount = health / 100f;
         sanityBarImage.fillAmount = sanity / 100f;
+
+        if (isDead) return;
     }
 
     void Heal()
@@ -69,6 +86,19 @@ public class PlayerStats : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Player has died.");
+        if (health <= 0)
+        {
+            deathScreenUI.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            isDead = true;
+            virtualCamera.enabled = false;
+        }
+    }
+
+     public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
