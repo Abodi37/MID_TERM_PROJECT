@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 108668478}
   - component: {fileID: 108668477}
   - component: {fileID: 108668476}
+  - component: {fileID: 108668479}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -288,7 +289,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1657534889}
+  m_Father: {fileID: 1730638571}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &108668476
 MonoBehaviour:
@@ -408,6 +409,20 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &108668479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108668474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba5ba77639644666a061dc2f1e532a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlashlightFollow
+  camTransform: {fileID: 1730638571}
+  speed: 10
 --- !u!1 &233954414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,7 +2139,7 @@ MonoBehaviour:
   - {fileID: 1691417120}
   enemyPrefab: {fileID: 6880771646815080165, guid: f65bd5c2feab64476a773e1027203634, type: 3}
   activeEnemies: []
-  spawnInterval: 5
+  spawnInterval: 25
 --- !u!4 &1521885812
 Transform:
   m_ObjectHideFlags: 0
@@ -2507,7 +2522,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1730638571}
-  - {fileID: 108668475}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1657534890
@@ -2819,7 +2833,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 108668475}
   m_Father: {fileID: 1657534889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1730638572
