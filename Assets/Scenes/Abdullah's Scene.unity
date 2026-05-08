@@ -306,7 +306,7 @@ MonoBehaviour:
   flashlight: {fileID: 108668478}
   batteryLevel: 100
   drainNormal: 2
-  drainAttack: 10
+  drainAttack: 5
   attackAngle: 15
   normalAngle: 50
   damagePerSecond: 50
