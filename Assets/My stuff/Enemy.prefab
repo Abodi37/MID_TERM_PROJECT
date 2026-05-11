@@ -243,3 +243,4 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   playerTransform: {fileID: 0}
+  deathEffect: {fileID: 2787556212050310887, guid: 57970c6bb711ec24b8d98424b1806f3b, type: 3}

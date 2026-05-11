@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 
     private EnemyManager manager;
     public Transform playerTransform;
+    public GameObject deathEffect;
 
     void Start()
     {
@@ -47,6 +48,14 @@ public class Enemy : MonoBehaviour
 
     void Evaporate()
     {
+        float heightOffset = -1f;
+        Vector3 spawnPos = transform.position + new Vector3(0, heightOffset, 0);
+
+         if (deathEffect != null)
+        {
+            Instantiate(deathEffect, spawnPos, Quaternion.Euler(-90, 0, 0));
+        }
+
         if (manager != null)
         {
             manager.EnemyKilled(gameObject);
