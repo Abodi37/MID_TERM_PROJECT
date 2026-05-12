@@ -25,6 +25,7 @@ public class FlashlightAttack : MonoBehaviour
 
     [Header("UI Image")]
     public Image batteryBarImage;
+    public GameObject FlashlightIcon;
 
     [Header("Script References")]
     public PlayerStats playerstats;
@@ -32,9 +33,12 @@ public class FlashlightAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && batteryLevel > 0)
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            flashlight.enabled = !flashlight.enabled;
+            if (batteryLevel > 0 || !flashlight.enabled)
+            {
+                ToggleFlashlight();
+            }
         }
 
         if (flashlight.enabled && Input.GetMouseButton(1))
@@ -56,10 +60,9 @@ public class FlashlightAttack : MonoBehaviour
             batteryInventory--;
         }
 
-        if (batteryLevel <= 0)
+        if (batteryLevel <= 0 && flashlight.enabled)
         {
-            batteryLevel = 0;
-            flashlight.enabled = false;
+            ToggleFlashlight();
         }
 
             if (batteryLevel <= 0 && batteryInventory > 0)
@@ -105,5 +108,14 @@ public class FlashlightAttack : MonoBehaviour
             attackSound.Stop();
         }
         isAttacking = false;
+    }
+    void ToggleFlashlight()
+    {
+        flashlight.enabled = !flashlight.enabled;
+
+        if (FlashlightIcon != null)
+        {
+            FlashlightIcon.SetActive(flashlight.enabled);
+        }
     }
 }
