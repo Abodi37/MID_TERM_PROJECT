@@ -9,7 +9,6 @@ public class PlayerStats : MonoBehaviour
     [Header("Stats")]
     public float health = 100f;
     public float sanity = 100f;
-    public int pillInventory = 0;
 
     [Header("Rates")]
     public float baseSanityDrop = 2f;
@@ -30,11 +29,15 @@ public class PlayerStats : MonoBehaviour
     [Header("Camera")]
     public CinemachineCamera virtualCamera;
 
+    [Header("Inventory")]
+    public InventoryManager inventoryManager;
+
     public EnemyManager enemyManager;
 
     void Start()
     {
         isDead = false;
+
         Time.timeScale = 1f;
     }
 
@@ -50,20 +53,25 @@ public class PlayerStats : MonoBehaviour
         {
             sanity += sanityRegenRate * Time.deltaTime;
         }
+
         sanity = Mathf.Clamp(sanity, 0, 100);
 
         if (sanity <= 0)
         {
             health -= damageRateAtZeroSanity * enemyCount * Time.deltaTime;
-            if (health <= 0) Die();
+
+            if (health <= 0)
+            {
+                Die();
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.H) && pillInventory > 0)
+        if (Input.GetKeyDown(KeyCode.H) && inventoryManager.HasItem("Pill"))
         {
             Heal();
         }
 
-        if (health <= 30f && pillInventory > 0)
+        if (health <= 30f && inventoryManager.HasItem("Pill"))
         {
             healPromptUI.SetActive(true);
         }
@@ -73,6 +81,7 @@ public class PlayerStats : MonoBehaviour
         }
 
         healthBarImage.fillAmount = health / 100f;
+
         sanityBarImage.fillAmount = sanity / 100f;
 
         if (isDead) return;
@@ -81,7 +90,8 @@ public class PlayerStats : MonoBehaviour
     void Heal()
     {
         health = 100f;
-        pillInventory--;
+
+        inventoryManager.RemoveItem("Pill");
     }
 
     void Die()
@@ -89,15 +99,20 @@ public class PlayerStats : MonoBehaviour
         if (health <= 0)
         {
             deathScreenUI.SetActive(true);
+
             Time.timeScale = 0f;
+
             Cursor.lockState = CursorLockMode.None;
+
             Cursor.visible = true;
+
             isDead = true;
+
             virtualCamera.enabled = false;
         }
     }
 
-     public void RestartGame()
+    public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

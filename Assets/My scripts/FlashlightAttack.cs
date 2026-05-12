@@ -9,10 +9,10 @@ public class FlashlightAttack : MonoBehaviour
     public float batteryLevel = 100f;
     public float drainNormal = 2f;
     public float drainAttack = 10f;
-    
+
     [Header("Attack Settings")]
-    public float attackAngle = 15f;   
-    public float normalAngle = 50f; 
+    public float attackAngle = 15f;
+    public float normalAngle = 50f;
     public float damagePerSecond = 50f;
     public float range = 10f;
     private bool isAttacking = false;
@@ -29,7 +29,7 @@ public class FlashlightAttack : MonoBehaviour
 
     [Header("Script References")]
     public PlayerStats playerstats;
-
+    public InventoryManager inventoryManager;
 
     void Update()
     {
@@ -44,7 +44,9 @@ public class FlashlightAttack : MonoBehaviour
         if (flashlight.enabled && Input.GetMouseButton(1))
         {
             flashlight.spotAngle = Mathf.Lerp(flashlight.spotAngle, attackAngle, Time.deltaTime * 10f);
+
             batteryLevel -= drainAttack * Time.deltaTime;
+
             PerformAttack();
         }
         else
@@ -54,10 +56,11 @@ public class FlashlightAttack : MonoBehaviour
             StopAttack();
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && batteryInventory > 0)
+        if (Input.GetKeyDown(KeyCode.R) && inventoryManager.HasItem("Battery"))
         {
             batteryLevel = 100f;
-            batteryInventory--;
+
+            inventoryManager.RemoveItem("Battery");
         }
 
         if (batteryLevel <= 0 && flashlight.enabled)
@@ -65,7 +68,7 @@ public class FlashlightAttack : MonoBehaviour
             ToggleFlashlight();
         }
 
-            if (batteryLevel <= 0 && batteryInventory > 0)
+        if (batteryLevel <= 0 && inventoryManager.HasItem("Battery"))
         {
             reloadPromptUI.SetActive(true);
         }
@@ -75,16 +78,18 @@ public class FlashlightAttack : MonoBehaviour
         }
 
         batteryBarImage.fillAmount = batteryLevel / 100f;
-        
+
         if (playerstats.isDead) return;
     }
 
     void PerformAttack()
     {
         RaycastHit hit;
+
         if (Physics.Raycast(transform.position, transform.forward, out hit, range))
         {
             Enemy enemy = hit.collider.GetComponent<Enemy>();
+
             if (enemy != null)
             {
                 if (!attackSound.isPlaying)

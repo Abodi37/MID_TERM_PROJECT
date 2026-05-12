@@ -13,7 +13,7 @@ public class BatteryPickup : MonoBehaviour
             FlashlightAttack player = FindFirstObjectByType<FlashlightAttack>();
             if (player != null)
             {
-                player.batteryInventory++;
+                player.inventoryManager.AddItem("Battery");
                 Destroy(gameObject);
             }
         }
