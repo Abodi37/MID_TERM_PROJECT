@@ -127,3 +127,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5322d61a7195b4f7bb2c360aa95dfb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryPickup
+  pickupRange: 3
+  pickupMessage: Press 'E' to pick up Battery

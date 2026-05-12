@@ -15,6 +15,8 @@ public class FlashlightAttack : MonoBehaviour
     public float normalAngle = 50f; 
     public float damagePerSecond = 50f;
     public float range = 10f;
+    private bool isAttacking = false;
+    public AudioSource attackSound;
 
     public int batteryInventory = 0;
 
@@ -45,6 +47,7 @@ public class FlashlightAttack : MonoBehaviour
         {
             flashlight.spotAngle = Mathf.Lerp(flashlight.spotAngle, normalAngle, Time.deltaTime * 10f);
             if (flashlight.enabled) batteryLevel -= drainNormal * Time.deltaTime;
+            StopAttack();
         }
 
         if (Input.GetKeyDown(KeyCode.R) && batteryInventory > 0)
@@ -81,8 +84,26 @@ public class FlashlightAttack : MonoBehaviour
             Enemy enemy = hit.collider.GetComponent<Enemy>();
             if (enemy != null)
             {
+                if (!attackSound.isPlaying)
+                {
+                    attackSound.Play();
+                }
+                else if (enemy == null)
+                {
+                    attackSound.Stop();
+                }
                 enemy.TakeDamage(damagePerSecond * Time.deltaTime);
+                isAttacking = true;
+                return;
             }
         }
+    }
+    void StopAttack()
+    {
+         if (attackSound.isPlaying)
+        {
+            attackSound.Stop();
+        }
+        isAttacking = false;
     }
 }
