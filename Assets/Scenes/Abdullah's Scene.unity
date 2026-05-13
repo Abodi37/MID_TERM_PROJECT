@@ -2461,7 +2461,7 @@ MonoBehaviour:
   - {fileID: 1691417120}
   enemyPrefab: {fileID: 6880771646815080165, guid: f65bd5c2feab64476a773e1027203634, type: 3}
   activeEnemies: []
-  spawnInterval: 10
+  spawnInterval: 20
 --- !u!4 &1521885812
 Transform:
   m_ObjectHideFlags: 0
