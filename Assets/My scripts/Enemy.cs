@@ -24,12 +24,12 @@ public class Enemy : MonoBehaviour
             attackSound = GetComponent<AudioSource>();
         }
     }
-    void Update()
-    {
-        if (playerTransform != null)
-        {
+    // void Update()
+    // {
+        // if (playerTransform != null)
+        // {
         // 1. Make the enemy look exactly at the player
-        transform.LookAt(playerTransform);
+        // transform.LookAt(playerTransform);
 
         // 2. OPTIONAL: If the enemy tilts weirdly (like leaning forward), 
         // use this instead to only rotate on the Y axis (staying upright):
@@ -38,9 +38,8 @@ public class Enemy : MonoBehaviour
                                             this.transform.position.y, 
                                             playerTransform.position.z);
         this.transform.LookAt(targetPostition);
-        */
-        }
-    }
+        //} */
+    // }
 
     public void TakeDamage(float amount)
     {
