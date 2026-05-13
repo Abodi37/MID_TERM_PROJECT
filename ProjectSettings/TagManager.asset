@@ -7,6 +7,7 @@ TagManager:
   - Battery
   - Pill
   - Key
+  - Fuse
   layers:
   - Default
   - TransparentFX

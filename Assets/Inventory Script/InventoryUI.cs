@@ -17,6 +17,10 @@ public class InventoryUI : MonoBehaviour
     public TextMeshProUGUI keyText;
     public GameObject keyImage;
 
+    [Header("Fuse UI")]
+    public TextMeshProUGUI fuseText;
+    public GameObject fuseImage;
+
     void Update()
     {
         // Battery
@@ -42,5 +46,13 @@ public class InventoryUI : MonoBehaviour
 
         keyText.gameObject.SetActive(keyCount > 0);
         keyImage.SetActive(keyCount > 0);
+
+        // Fuse
+        int fuseCount = inventoryManager.GetItemCount("Fuse");
+
+        fuseText.text = fuseCount.ToString();
+
+        fuseText.gameObject.SetActive(fuseCount > 0);
+        fuseImage.SetActive(fuseCount > 0);
     }
 }

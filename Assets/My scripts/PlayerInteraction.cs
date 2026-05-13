@@ -62,6 +62,21 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
 
+            // Fuse
+            else if (hit.collider.CompareTag("Fuse"))
+            {
+                interactUI.SetActive(true);
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    flashlightScript.inventoryManager.AddItem("Fuse");
+
+                    Destroy(hit.collider.gameObject);
+
+                    interactUI.SetActive(false);
+                }
+            }
+
             else
             {
                 interactUI.SetActive(false);
