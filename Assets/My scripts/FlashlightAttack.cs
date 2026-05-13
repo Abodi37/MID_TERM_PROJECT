@@ -15,8 +15,9 @@ public class FlashlightAttack : MonoBehaviour
     public float normalAngle = 50f;
     public float damagePerSecond = 50f;
     public float range = 10f;
+    private Enemy lastHitEnemy;
     private bool isAttacking = false;
-    public AudioSource attackSound;
+    public AudioSource flashlightSwitchSound;
 
     public int batteryInventory = 0;
 
@@ -38,7 +39,12 @@ public class FlashlightAttack : MonoBehaviour
             if (batteryLevel > 0 || !flashlight.enabled)
             {
                 ToggleFlashlight();
+                if (flashlightSwitchSound != null)
+                {
+                    flashlightSwitchSound.Play();
+                }
             }
+
         }
 
         if (flashlight.enabled && Input.GetMouseButton(1))
@@ -92,26 +98,21 @@ public class FlashlightAttack : MonoBehaviour
 
             if (enemy != null)
             {
-                if (!attackSound.isPlaying)
+              if (lastHitEnemy != null && lastHitEnemy != enemy)
                 {
-                    attackSound.Play();
+                    lastHitEnemy.StopAttackSound();
                 }
-                else if (enemy == null)
-                {
-                    attackSound.Stop();
-                }
+                enemy.PlayAttackSound();
                 enemy.TakeDamage(damagePerSecond * Time.deltaTime);
                 isAttacking = true;
+                lastHitEnemy = enemy;
                 return;
             }
         }
+        StopCurrentEnemySound();
     }
     void StopAttack()
     {
-         if (attackSound.isPlaying)
-        {
-            attackSound.Stop();
-        }
         isAttacking = false;
     }
     void ToggleFlashlight()
@@ -121,6 +122,14 @@ public class FlashlightAttack : MonoBehaviour
         if (FlashlightIcon != null)
         {
             FlashlightIcon.SetActive(flashlight.enabled);
+        }
+    }
+    void StopCurrentEnemySound()
+    {
+        if (lastHitEnemy != null)
+        {
+            lastHitEnemy.StopAttackSound();
+            lastHitEnemy = null;
         }
     }
 }
