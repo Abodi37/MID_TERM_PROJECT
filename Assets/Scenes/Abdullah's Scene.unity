@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 108668477}
   - component: {fileID: 108668476}
   - component: {fileID: 108668479}
-  - component: {fileID: 108668480}
+  - component: {fileID: 108668481}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -312,7 +312,7 @@ MonoBehaviour:
   normalAngle: 50
   damagePerSecond: 50
   range: 10
-  attackSound: {fileID: 108668480}
+  flashlightSwitchSound: {fileID: 108668481}
   batteryInventory: 0
   reloadPromptUI: {fileID: 51052350}
   batteryBarImage: {fileID: 1669048588}
@@ -426,7 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlashlightFollow
   camTransform: {fileID: 1730638571}
   speed: 10
---- !u!82 &108668480
+--- !u!82 &108668481
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -437,9 +437,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: e974db4c41c6d4996b870bfc190fc1e9, type: 3}
+  m_Resource: {fileID: 8300000, guid: 0fbcee14451b44baeb21301f6d2ceaa9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.45
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -483,7 +483,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2461,7 +2461,7 @@ MonoBehaviour:
   - {fileID: 1691417120}
   enemyPrefab: {fileID: 6880771646815080165, guid: f65bd5c2feab64476a773e1027203634, type: 3}
   activeEnemies: []
-  spawnInterval: 25
+  spawnInterval: 10
 --- !u!4 &1521885812
 Transform:
   m_ObjectHideFlags: 0
@@ -4056,7 +4056,7 @@ PrefabInstance:
     - target: {fileID: 1980744235063596803, guid: f65bd5c2feab64476a773e1027203634, type: 3}
       propertyPath: attackSound
       value: 
-      objectReference: {fileID: 108668480}
+      objectReference: {fileID: 0}
     - target: {fileID: 6880771646815080165, guid: f65bd5c2feab64476a773e1027203634, type: 3}
       propertyPath: m_Name
       value: Enemy

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -9,6 +10,8 @@ public class Enemy : MonoBehaviour
     private EnemyManager manager;
     public Transform playerTransform;
     public GameObject deathEffect;
+    [Header("Audio Settings")]
+    public AudioSource attackSound;
 
     void Start()
     {
@@ -16,6 +19,10 @@ public class Enemy : MonoBehaviour
         if (playerTransform == null)
         {
             playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        if (attackSound == null)
+        {
+            attackSound = GetComponent<AudioSource>();
         }
     }
     void Update()
@@ -63,4 +70,20 @@ public class Enemy : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    public void PlayAttackSound()
+    {
+        if (attackSound != null && !attackSound.isPlaying)
+        {
+            attackSound.Play();
+        }
+    }
+
+    public void StopAttackSound()
+{
+    if (attackSound != null && attackSound.isPlaying)
+    {
+        attackSound.Stop();
+    }
+}
 }

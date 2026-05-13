@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // Add this if using TextMeshPro
+using TMPro;
 
 public class PlayerInteraction : MonoBehaviour
 {
