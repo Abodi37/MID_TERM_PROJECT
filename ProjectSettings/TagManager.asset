@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Flesh
   - Enemy
+  - Battery
+  - Pill
+  - Key
+  - Fuse
   layers:
   - Default
   - TransparentFX
@@ -21,7 +25,7 @@ TagManager:
   - Ground
   - Slope
   - World UI
-  - 
+  - Interactables
   - 
   - 
   - 
