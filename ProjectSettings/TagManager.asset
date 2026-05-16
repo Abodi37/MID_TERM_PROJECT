@@ -10,6 +10,7 @@ TagManager:
   - Pill
   - Key
   - Fuse
+  - FlashlightItem
   layers:
   - Default
   - TransparentFX
