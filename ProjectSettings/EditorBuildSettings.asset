@@ -12,13 +12,22 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1.unity
     guid: 5c74be739d0e3fa48953558ca8bcba40
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: f5244e070e9d1f0448fd9617695224ea
+    path: Assets/main-1.unity
+    guid: abddc17a27fc3374e975a1744c5f3d35
   - enabled: 1
     path: Assets/ThunderWire Studio/UHFPS/Content/Scenes/LevelManager.unity
     guid: e8115f250f482ec4d8ad6ea1dc55e505
   - enabled: 1
     path: Assets/Intro1.unity
     guid: cdc6869230250344791dcd4b767deea2
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: f5244e070e9d1f0448fd9617695224ea
+  - enabled: 1
+    path: Assets/InsideHouse.unity
+    guid: 95403daff3969774f86fcc8000b7b243
+  - enabled: 1
+    path: Assets/Scenes/End1.unity
+    guid: b48ca32fac3f50346aa0c9ef867dda28
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

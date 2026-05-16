@@ -93,6 +93,7 @@ public class PlayerInteraction : MonoBehaviour
                         {
                             flashlightScript.handsFlashlightObject.SetActive(true);
                         }
+                        flashlightScript.TriggerTutorial();
                     }
 
                     // 3. Remove the object off the table

@@ -29,6 +29,11 @@ public class FlashlightAttack : MonoBehaviour
     public AudioSource flashlightSwitchSound;
     public AudioSource flashlightRelaodSound;
 
+    [Header("Tutorial UI")]
+    [Tooltip("Drag your tutorial panel GameObject here")]
+    public GameObject tutorialPanel;
+    private bool waitingForTutorialClose = false;
+
     [Header("Script References")]
     public PlayerStats playerstats;
     public InventoryManager inventoryManager;
@@ -48,6 +53,21 @@ public class FlashlightAttack : MonoBehaviour
     void Update()
     {
         if (playerstats.isDead) return;
+        if (waitingForTutorialClose)
+        {
+            if (Input.anyKeyDown)
+            {
+                tutorialPanel.SetActive(false);
+                Time.timeScale = 1f; // Unfreeze the game!
+                waitingForTutorialClose = false;
+
+                // Re-lock the cursor for gameplay
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            return; // Stop running any other flashlight code while paused
+        }
+
 
         // Safety block: Keep everything turned off until collected from the table
         if (!hasPickedUpFromTable)
@@ -164,6 +184,20 @@ public class FlashlightAttack : MonoBehaviour
             lastHitEnemy = null;
         }
     }
+    public void TriggerTutorial()
+    {
+        if (tutorialPanel != null)
+        {
+            tutorialPanel.SetActive(true);
+            Time.timeScale = 0f; // Freeze the game so the player can read it safely
+            waitingForTutorialClose = true;
+
+            // Unlock mouse cursor so they feel in control (optional)
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+
 }
 
 
