@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55106f91a38b6d4a8120c7aec3aa82d, type: 3}
   m_Name: Objectives 1
   m_EditorClassIdentifier: Assembly-CSharp::UHFPS.Scriptable.ObjectivesAsset
-  Objectives: []
+  Objectives:
+  - ObjectiveKey: Flashlight
+    ObjectiveTitle:
+      GlocText: Find the Flashlight
+      NormalText: 
+    SubObjectives:
+    - SubObjectiveKey: '*Flashlight'
+      CompleteCount: 0
+      ObjectiveText:
+        GlocText: Find The Spotlight
+        NormalText: 

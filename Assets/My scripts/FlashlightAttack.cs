@@ -27,6 +27,7 @@ public class FlashlightAttack : MonoBehaviour
     public Image batteryBarImage;
     public TextMeshProUGUI promptText; // Strictly for the "Press R to reload" text!
     public AudioSource flashlightSwitchSound;
+    public AudioSource flashlightRelaodSound;
 
     [Header("Script References")]
     public PlayerStats playerstats;
@@ -80,6 +81,7 @@ public class FlashlightAttack : MonoBehaviour
                 inventoryManager.RemoveItem("Battery");
                 if (flashlight != null) flashlight.enabled = isLightOn;
                 if (promptText != null) promptText.gameObject.SetActive(false);
+                if (flashlightRelaodSound != null) flashlightRelaodSound.Play();
             }
         }
 
