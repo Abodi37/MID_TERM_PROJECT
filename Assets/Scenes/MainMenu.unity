@@ -8456,7 +8456,7 @@ MonoBehaviour:
   fullscreenToggle: {fileID: 515421766}
   confirmationPrompt: {fileID: 1985372025}
   qualityDropdown: {fileID: 18258844}
-  newGameLevel: Level1
+  newGameLevel: LoadingScreen
   noSaveGameDialog: {fileID: 1899670232}
   resolutionDropdown: {fileID: 255343385}
 --- !u!4 &1255194266
