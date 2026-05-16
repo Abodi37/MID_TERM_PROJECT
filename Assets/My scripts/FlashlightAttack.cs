@@ -1,10 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FlashlightAttack : MonoBehaviour
 {
     [Header("Flashlight Settings")]
-    public Light flashlight; // « —ﬂÂ« ›«—€… ›Ì «·≈‰”»Ìﬂ Ê—! «·ﬂÊœ ”ÌÃœÂ«  ·ﬁ«∆Ì«
+    [Tooltip("Drag your active 'Flashlight' hand GameObject from the hierarchy here")]
+    public GameObject handsFlashlightObject;
+    [Tooltip("Drag the child 'Spot Light' component here")]
+    public Light flashlight;
+    
     public float batteryLevel = 100f;
     public float drainNormal = 2f;
     public float drainAttack = 10f;
@@ -18,105 +23,109 @@ public class FlashlightAttack : MonoBehaviour
     private bool isAttacking = false;
 
     [Header("UI References")]
-    public GameObject FlashlightIcon; // ’Ê—… «·ﬂ‘«›
-    public Image batteryBarImage; // «·⁄œ«œ «·œ«∆—Ì  Õ  Ì”«—
+    public GameObject FlashlightIcon;
+    public Image batteryBarImage;
+    public TextMeshProUGUI promptText; // Strictly for the "Press R to reload" text!
+    public AudioSource flashlightSwitchSound;
 
     [Header("Script References")]
     public PlayerStats playerstats;
     public InventoryManager inventoryManager;
 
-    private GameObject handsFlashlightObject;
+    private bool isLightOn = false; 
+    [HideInInspector] public bool hasPickedUpFromTable = false; 
 
     void Start()
     {
-        FindFlashlightAutomatically();
-    }
-
-    void FindFlashlightAutomatically()
-    {
-        // «·»ÕÀ «· ·ﬁ«∆Ì ⁄‰ „”«— „Ã”„ «·ﬂ‘«› œ«Œ· Ìœ «··«⁄» Õ”» Õ“„… UHFPS
-        Transform handsHolder = transform.Find("FPView/PlayerVirtualCamera/HandsHolder");
-        if (handsHolder != null)
-        {
-            Transform flTransform = handsHolder.Find("Flashlight");
-            if (flTransform != null)
-            {
-                handsFlashlightObject = flTransform.gameObject;
-                // Ã·» „—Ã⁄ «··„»… «·œ«Œ·Ì  ·ﬁ«∆Ì« »œÊ‰ ”Õ» ÌœÊÌ
-                flashlight = handsFlashlightObject.GetComponentInChildren<Light>(true);
-            }
-        }
+        if (promptText != null) promptText.gameObject.SetActive(false);
+        
+        // Hide UI elements on startup
+        if (FlashlightIcon != null) FlashlightIcon.SetActive(false);
+        if (batteryBarImage != null) batteryBarImage.gameObject.SetActive(false);
     }
 
     void Update()
     {
         if (playerstats.isDead) return;
 
-        // ≈–« ÷«⁄  «·‰”Œ… √Ê ·„ Ì⁄À— ⁄·ÌÂ« »⁄œ° Ì»ÕÀ ⁄‰Â« ›Ê—«
-        if (handsFlashlightObject == null || flashlight == null)
+        // Safety block: Keep everything turned off until collected from the table
+        if (!hasPickedUpFromTable)
         {
-            FindFlashlightAutomatically();
+            if (FlashlightIcon != null) FlashlightIcon.SetActive(false);
+            if (batteryBarImage != null) batteryBarImage.gameObject.SetActive(false);
+            if (promptText != null) promptText.gameObject.SetActive(false);
             return;
         }
 
-        // «· Õﬁﬁ: Â· «··«⁄» „«”ﬂ «·ﬂ‘«› ›Ì ÌœÂ Õ«·Ì« Ê„›⁄¯· „‰ «·Õ“„…ø
-        bool isHoldingFlashlight = handsFlashlightObject.activeInHierarchy;
+        // Show the battery bar frame because they now own the item
+        if (batteryBarImage != null) batteryBarImage.gameObject.SetActive(true);
 
-        // ≈ŸÂ«— Ê≈Œ›«¡ «·√ÌﬁÊ‰… Ê«·⁄œ«œ »‰«¡ ⁄·Ï Â· «·ﬂ‘«› ›Ì Ìœﬂ √Ê ·«
-        if (FlashlightIcon != null) FlashlightIcon.SetActive(isHoldingFlashlight);
-        if (batteryBarImage != null) batteryBarImage.gameObject.SetActive(isHoldingFlashlight);
-
-        // ≈–« «··«⁄» „Ê „«”ﬂ «·ﬂ‘«› Õ«·Ì«° ‰Êﬁ› »ﬁÌ… «·ﬂÊœ
-        if (!isHoldingFlashlight)
+        // --- Toggle Light Switch (F) ---
+        if (Input.GetKeyDown(KeyCode.F) && batteryLevel > 0)
         {
-            StopAttack();
-            return;
+            isLightOn = !isLightOn;
+            if (flashlight != null) flashlight.enabled = isLightOn;
+            if (flashlightSwitchSound != null) flashlightSwitchSound.Play();
         }
 
-        // 3. √„— «·—Ì·Êœ »÷€ÿ “— R (‘€«· œ«∆„« ÿ«·„« «·ﬂ‘«› ›Ì Ìœﬂ)
+        // Sync the UI Icon image directly with the light bulb power state
+        if (FlashlightIcon != null) FlashlightIcon.SetActive(isLightOn);
+
+        // --- Reload Logic (R) ---
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (batteryLevel < 100f && inventoryManager.HasItem("Battery"))
             {
-                batteryLevel = 100f; // ‘Õ‰ «·⁄œ«œ «·œ«∆—Ì
-                inventoryManager.RemoveItem("Battery"); // Œ’„ Õ»… „‰ «·‘‰ÿ…
-                flashlight.enabled = true; //  ‘€Ì· «·÷Ê¡ ›Ê—«
-                Debug.Log(" „ ≈⁄«œ… «·‘Õ‰ »‰Ã«Õ Ê»‘ﬂ· œÌ‰«„ÌﬂÌ!");
+                batteryLevel = 100f;
+                inventoryManager.RemoveItem("Battery");
+                if (flashlight != null) flashlight.enabled = isLightOn; 
+                if (promptText != null) promptText.gameObject.SetActive(false);
             }
         }
 
-        // 4. ≈–« ›÷  «·»ÿ«—Ì…° ‰ÿ›Ì «··„»… Ê‰’›— «·⁄œ«œ
+        // --- Battery Depletion Tracking ---
         if (batteryLevel <= 0)
         {
             batteryLevel = 0;
-            flashlight.enabled = false; // Ìÿ›Ì «·‰Ê—
+            isLightOn = false;
+            if (flashlight != null) flashlight.enabled = false; 
             StopAttack();
+            StopCurrentEnemySound();
+            
             if (batteryBarImage != null) batteryBarImage.fillAmount = 0;
+
+            if (promptText != null && inventoryManager.HasItem("Battery"))
+            {
+                promptText.gameObject.SetActive(true);
+                promptText.text = "Press 'R' to reload battery";
+            }
             return;
         }
 
-        // 5. «” Â·«ﬂ «·ÿ«ﬁ… √À‰«¡ «·ÂÃÊ„ √Ê «·Ê÷⁄ «·⁄«œÌ
-        if (flashlight.enabled)
+        // --- Active Attack Mechanics Loop ---
+        if (isLightOn && flashlight != null && flashlight.enabled)
         {
-            if (Input.GetMouseButton(1)) // ﬂ·Ìﬂ Ì„Ì‰ ( —ﬂÌ“ «·‰Ê— Ê«·ÂÃÊ„)
+            if (Input.GetMouseButton(1))
             {
                 flashlight.spotAngle = Mathf.Lerp(flashlight.spotAngle, attackAngle, Time.deltaTime * 10f);
                 batteryLevel -= drainAttack * Time.deltaTime;
                 PerformAttack();
             }
-            else // Ê÷⁄ ⁄«œÌ
+            else
             {
                 flashlight.spotAngle = Mathf.Lerp(flashlight.spotAngle, normalAngle, Time.deltaTime * 10f);
                 batteryLevel -= drainNormal * Time.deltaTime;
                 StopAttack();
+                StopCurrentEnemySound(); 
             }
         }
         else
         {
             StopAttack();
+            StopCurrentEnemySound();
         }
 
-        //  ÕœÌÀ ‰”»… «·⁄œ«œ «·œ«∆—Ì  Õ  Ì”«—
+        // Keep foreground fill meter synced
         if (batteryBarImage != null)
         {
             batteryBarImage.fillAmount = batteryLevel / 100f;
@@ -126,12 +135,13 @@ public class FlashlightAttack : MonoBehaviour
     void PerformAttack()
     {
         RaycastHit hit;
+        // Shoot directly forward from the camera/flashlight trajectory position
         if (Physics.Raycast(flashlight.transform.position, flashlight.transform.forward, out hit, range))
         {
             Enemy enemy = hit.collider.GetComponent<Enemy>();
             if (enemy != null)
             {
-                if (lastHitEnemy != null && lastHitEnemy != enemy) enemy.StopAttackSound();
+                if (lastHitEnemy != null && lastHitEnemy != enemy) lastHitEnemy.StopAttackSound();
                 enemy.PlayAttackSound();
                 enemy.TakeDamage(damagePerSecond * Time.deltaTime);
                 isAttacking = true;
@@ -143,5 +153,13 @@ public class FlashlightAttack : MonoBehaviour
     }
 
     void StopAttack() { isAttacking = false; }
-    void StopCurrentEnemySound() { if (lastHitEnemy != null) { lastHitEnemy.StopAttackSound(); lastHitEnemy = null; } }
+    
+    void StopCurrentEnemySound() 
+    { 
+        if (lastHitEnemy != null) 
+        { 
+            lastHitEnemy.StopAttackSound(); 
+            lastHitEnemy = null; 
+        }
+    }
 }
