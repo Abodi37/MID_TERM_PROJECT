@@ -8,16 +8,24 @@ public class BatteryPickup : MonoBehaviour
 
     void Update()
     {
+        // Â–« «·”ÿ— Ì÷„‰ √‰Â ·Ê ÷€ÿ E ÊÂÊ ﬁ—Ì» „‰ «·ﬂÊ·«Ìœ—  ‘ €·
         if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
         {
-            FlashlightAttack player = FindFirstObjectByType<FlashlightAttack>();
-            if (player != null)
-            {
-                player.inventoryManager.AddItem("Battery");
-                Destroy(gameObject);
-            }
+            InteractWithObject();
         }
     }
+
+    // «·œ«·… «·”Õ—Ì… «·„› ÊÕ… ··Õ“„… (Public)
+    public void InteractWithObject()
+    {
+        FlashlightAttack player = FindFirstObjectByType<FlashlightAttack>();
+        if (player != null)
+        {
+            player.inventoryManager.AddItem("Battery");
+            Destroy(gameObject);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
