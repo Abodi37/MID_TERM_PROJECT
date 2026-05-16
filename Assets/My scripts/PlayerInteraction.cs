@@ -76,30 +76,31 @@ public class PlayerInteraction : MonoBehaviour
                     interactUI.SetActive(false);
                 }
             }
-else if (hit.collider.CompareTag("FlashlightItem"))
-{
-    interactUI.SetActive(true);
-
-    if (Input.GetKeyDown(KeyCode.E))
-    {
-        if (flashlightScript != null)
-        {
-            // 1. Unlock the safety variables inside the master script
-            flashlightScript.hasPickedUpFromTable = true;
-            flashlightScript.batteryLevel = 100f;
-
-            // 2. Explicitly turn on the hand model object linked in your inspector
-            if (flashlightScript.handsFlashlightObject != null)
+            else if (hit.collider.CompareTag("FlashlightItem"))
             {
-                flashlightScript.handsFlashlightObject.SetActive(true);
-            }
-        }
+                interactUI.SetActive(true);
 
-        // 3. Remove the object off the table
-        Destroy(hit.collider.gameObject);
-        interactUI.SetActive(false);
-    }
-}
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (flashlightScript != null)
+                    {
+                        // 1. Unlock the safety variables inside the master script
+                        flashlightScript.hasPickedUpFromTable = true;
+                        flashlightScript.batteryLevel = 100f;
+
+                        // 2. Explicitly turn on the hand model object linked in your inspector
+                        if (flashlightScript.handsFlashlightObject != null)
+                        {
+                            flashlightScript.handsFlashlightObject.SetActive(true);
+                        }
+
+                        flashlightScript.TriggerTutorial();
+                    }
+                    // 3. Remove the object off the table
+                    Destroy(hit.collider.gameObject);
+                    interactUI.SetActive(false);
+                }
+            }
 
             else
             {
