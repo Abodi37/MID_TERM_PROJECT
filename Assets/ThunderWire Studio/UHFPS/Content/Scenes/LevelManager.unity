@@ -157,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1680686305024344842, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
       propertyPath: m_text
-      value: 
+      value: 'Take Care '
       objectReference: {fileID: 0}
     - target: {fileID: 2440201664425607479, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
       propertyPath: m_Sprite
@@ -253,7 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7137861545701340859, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
       propertyPath: m_text
-      value: 
+      value: Shadow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
