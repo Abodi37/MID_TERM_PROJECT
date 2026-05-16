@@ -9,19 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00668fd727de9bb4081a8a202ce24c3b, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Settings
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Wooshii.HierarchyDecorator.Editor:HierarchyDecorator:Settings
   globalData:
-    showActiveToggles: 0
+    showActiveToggles: 1
     activeToggleType: 0
     activeSwiping: 1
     swipeSameState: 1
     swipeSelectionOnly: 1
     depthMode: 0
     tagLayerLayout: 0
-    showTags: 0
-    showLayers: 0
+    showTags: 1
+    showLayers: 1
     applyChildLayers: 1
     showAllComponents: 1
     showBreadcrumbs: 1
@@ -286,7 +286,7 @@ MonoBehaviour:
         m_StretchWidth: 1
         m_StretchHeight: 0
       capturedGroups: []
-    twoToneBackground: 0
+    twoToneBackground: 1
     lightMode:
       colorOne: {r: 0.8, g: 0.8, b: 0.8, a: 1}
       colorTwo: {r: 0.765, g: 0.765, b: 0.765, a: 1}
@@ -297,7 +297,7 @@ MonoBehaviour:
     enableIcons: 1
     clickToToggleComponent: 1
     showMissingScriptWarning: 1
-    showAll: 0
+    showAll: 3
     stackDuplicateIcons: 0
     unityGroups:
     - name: General
@@ -5322,344 +5322,6 @@ MonoBehaviour:
     customGroups: []
     allCustomComponents:
       name: All
-      components:
-      - displayName: JumpscareManager
-        name: UHFPS.Runtime.JumpscareManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: JumpscareManager
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: JumpscareManager
-          m_TextWithWhitespace: "JumpscareManager\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 346f709cd4140ab43b2ab5f1183a0f07, type: 3}
-        hasToggle: 1
-      - displayName: Inventory
-        name: UHFPS.Runtime.Inventory, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: Inventory
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: Inventory
-          m_TextWithWhitespace: "Inventory\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 688b2672def301f43b8ff086cb334fb9, type: 3}
-        hasToggle: 1
-      - displayName: ObjectiveManager
-        name: UHFPS.Runtime.ObjectiveManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: ObjectiveManager
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: ObjectiveManager
-          m_TextWithWhitespace: "ObjectiveManager\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 03f80358fc6284944bcafade8b43ed82, type: 3}
-        hasToggle: 1
-      - displayName: SaveGameManager
-        name: UHFPS.Runtime.SaveGameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: SaveGameManager
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: SaveGameManager
-          m_TextWithWhitespace: "SaveGameManager\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: c8ac3ab2d5f242f46a6842d582affc51, type: 3}
-        hasToggle: 1
-      - displayName: PlayerPresenceManager
-        name: UHFPS.Runtime.PlayerPresenceManager, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: PlayerPresenceManager
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: PlayerPresenceManager
-          m_TextWithWhitespace: "PlayerPresenceManager\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 97a0658c235e5bb49b72b187b1d7b049, type: 3}
-        hasToggle: 1
-      - displayName: GameManager
-        name: UHFPS.Runtime.GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: GameManager
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: GameManager
-          m_TextWithWhitespace: "GameManager\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 31f076010a403744c8b2e80977e9eabc, type: 3}
-        hasToggle: 1
-      - displayName: GameLocalization
-        name: UHFPS.Runtime.GameLocalization, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: GameLocalization
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: GameLocalization
-          m_TextWithWhitespace: "GameLocalization\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 310718e14c5999b40a80026f7a0fd12c, type: 3}
-        hasToggle: 1
-      - displayName: InputManager
-        name: UHFPS.Input.InputManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: InputManager
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: InputManager
-          m_TextWithWhitespace: "InputManager\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 898a008133e280d49994ff9c7357db9d, type: 3}
-        hasToggle: 1
-      - displayName: JumpscareDirect
-        name: UHFPS.Runtime.JumpscareDirect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: JumpscareDirect
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: JumpscareDirect
-          m_TextWithWhitespace: "JumpscareDirect\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 876cab1e349a5c74ead774895e7d76c4, type: 3}
-        hasToggle: 1
-      - displayName: PlayerHealth
-        name: UHFPS.Runtime.PlayerHealth, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: PlayerHealth
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: PlayerHealth
-          m_TextWithWhitespace: "PlayerHealth\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 8b2b7019376cff84b8a7bc7e0591bbd7, type: 3}
-        hasToggle: 1
-      - displayName: FootstepsSystem
-        name: UHFPS.Runtime.FootstepsSystem, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: FootstepsSystem
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: FootstepsSystem
-          m_TextWithWhitespace: "FootstepsSystem\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: e7d1f8fe98db7364abb689b171ac82b0, type: 3}
-        hasToggle: 1
-      - displayName: PlayerStateMachine
-        name: UHFPS.Runtime.PlayerStateMachine, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: PlayerStateMachine
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: PlayerStateMachine
-          m_TextWithWhitespace: "PlayerStateMachine\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 78c7a3b06093c164fa0ce987469871fa, type: 3}
-        hasToggle: 1
-      - displayName: PlayerManager
-        name: UHFPS.Runtime.PlayerManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: PlayerManager
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: PlayerManager
-          m_TextWithWhitespace: "PlayerManager\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 19f7c3d9d6e7bf749983c3636437ff0b, type: 3}
-        hasToggle: 1
-      - displayName: AIWaypointsGroup
-        name: UHFPS.Runtime.AIWaypointsGroup, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: AIWaypointsGroup
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: AIWaypointsGroup
-          m_TextWithWhitespace: "AIWaypointsGroup\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 55530fb93f2cbd14a889739df7ad22e5, type: 3}
-        hasToggle: 1
-      - displayName: NPCHealth
-        name: UHFPS.Runtime.NPCHealth, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: NPCHealth
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: NPCHealth
-          m_TextWithWhitespace: "NPCHealth\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: df34d8deeee11f64aaa8afbba5c2a724, type: 3}
-        hasToggle: 1
-      - displayName: NPCStateMachine
-        name: UHFPS.Runtime.NPCStateMachine, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: NPCStateMachine
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: NPCStateMachine
-          m_TextWithWhitespace: "NPCStateMachine\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 71c2cfaccfa80f343807a0be42c701ba, type: 3}
-        hasToggle: 1
-      - displayName: DialogueSystem
-        name: UHFPS.Runtime.DialogueSystem, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: DialogueSystem
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: DialogueSystem
-          m_TextWithWhitespace: "DialogueSystem\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 4876fa0513a9d7d41a703a6508cd3a14, type: 3}
-        hasToggle: 1
-      - displayName: OptionsManager
-        name: UHFPS.Runtime.OptionsManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: OptionsManager
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: OptionsManager
-          m_TextWithWhitespace: "OptionsManager\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: b6a8f9923de06324f9abd4d4f5076862, type: 3}
-        hasToggle: 1
-      - displayName: ModifyTreeHeight
-        name: UHFPS.Runtime.ModifyTreeHeight, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: ModifyTreeHeight
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: ModifyTreeHeight
-          m_TextWithWhitespace: "ModifyTreeHeight\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 86379d830abb4e34f9a702d0bf4b436b, type: 3}
-        hasToggle: 1
-      - displayName: PuzzleExamine
-        name: UHFPS.Runtime.PuzzleExamine, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: PuzzleExamine
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: PuzzleExamine
-          m_TextWithWhitespace: "PuzzleExamine\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 9d017f81ceb378c4b9d7c43ff8377718, type: 3}
-        hasToggle: 1
-      - displayName: DynamicObject
-        name: UHFPS.Runtime.DynamicObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: DynamicObject
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: DynamicObject
-          m_TextWithWhitespace: "DynamicObject\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 0ddc39b34b857144a9bdc90423afbb96, type: 3}
-        hasToggle: 1
-      - displayName: CustomInteractTitle
-        name: UHFPS.Runtime.CustomInteractTitle, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: CustomInteractTitle
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: CustomInteractTitle
-          m_TextWithWhitespace: "CustomInteractTitle\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 44e2230d6857bf14995464535978be6b, type: 3}
-        hasToggle: 1
-      - displayName: CoroutineRunner
-        name: UHFPS.Tools.CoroutineRunner, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: CoroutineRunner
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: CoroutineRunner
-          m_TextWithWhitespace: "CoroutineRunner\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: bdaed5475436c314dbd5d3a5ec79e7e0, type: 3}
-        hasToggle: 1
-      - displayName: InteractableItem
-        name: UHFPS.Runtime.InteractableItem, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: InteractableItem
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: InteractableItem
-          m_TextWithWhitespace: "InteractableItem\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 1193cc42578b51349ae91df02822e87c, type: 3}
-        hasToggle: 1
-      - displayName: JumpscareTrigger
-        name: UHFPS.Runtime.JumpscareTrigger, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: JumpscareTrigger
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: JumpscareTrigger
-          m_TextWithWhitespace: "JumpscareTrigger\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 45df30382c8585a41b534c5f0f78982a, type: 3}
-        hasToggle: 1
-      - displayName: LookAtTrigger
-        name: UHFPS.Runtime.LookAtTrigger, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        content:
-          m_Text: LookAtTrigger
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: LookAtTrigger
-          m_TextWithWhitespace: "LookAtTrigger\u200B"
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 39c86548e94bdc84f83fcb9137a7596e, type: 3}
-        hasToggle: 1
+      components: []
     unityVersion: 6000.4.5f1
     unityCount: 385
