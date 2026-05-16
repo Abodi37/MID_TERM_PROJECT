@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf7c99c8387643edb3824ffacae6bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadingScreenManager
-  sceneToLoad: Intro1
+  sceneToLoad: InsideHouse
   loadingBar: {fileID: 829021144}
   progressText: {fileID: 270382213}
   promptText: {fileID: 854211983}
