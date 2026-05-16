@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 739956880366519295, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: SwitchManually
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 849387187507602631, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
       propertyPath: m_Value
       value: 0.018
@@ -158,6 +162,22 @@ PrefabInstance:
     - target: {fileID: 1680686305024344842, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
       propertyPath: m_text
       value: 'Take Care '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926522897735945627, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: TipTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926522897735945627, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: TipsList.Array.data[0].GlocText
+      value: '*I Hate Shadow'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926522897735945627, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: TipsList.Array.data[1].GlocText
+      value: '*My Daughter Hate Me'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926522897735945627, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
+      propertyPath: TipsList.Array.data[2].GlocText
+      value: '*Do Like Me'
       objectReference: {fileID: 0}
     - target: {fileID: 2440201664425607479, guid: a6d90327880ef514da0c37e51d684ce0, type: 3}
       propertyPath: m_Sprite
