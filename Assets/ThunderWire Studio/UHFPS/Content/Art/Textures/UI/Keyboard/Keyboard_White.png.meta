@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: fd2b7578b4d0731479e523bc50659004
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254506
+  packageName: UHFPS - Ultimate Horror FPS KIT (URP)
+  packageVersion: 1.4.2
+  assetPath: Assets/ThunderWire Studio/UHFPS/Content/Art/Textures/UI/Keyboard/Keyboard_White.png
+  uploadId: 880034
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +76,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -2313,10 +2320,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 254506
-  packageName: UHFPS - Ultimate Horror FPS KIT (URP)
-  packageVersion: 1.4.2
-  assetPath: Assets/ThunderWire Studio/UHFPS/Content/Art/Textures/UI/Keyboard/Keyboard_White.png
-  uploadId: 880034
