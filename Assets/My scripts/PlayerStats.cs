@@ -116,4 +116,5 @@ public class PlayerStats : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 }
