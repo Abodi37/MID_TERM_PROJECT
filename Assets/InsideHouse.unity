@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.5188679, g: 0.4723656, b: 0.4723656, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.013
+  m_FogDensity: 0.007
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.103773594, g: 0.05531328, b: 0.05531328, a: 1}
@@ -1187,12 +1187,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: PaperText.GlocText
-      value: papers.example
+      value: '*I miss you so, so much! When are you coming back? Today, Mom and I
+        made delicious cookies, and I really wished you were here to taste them with
+        us'
       objectReference: {fileID: 0}
     - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: PaperText.NormalText
       value: "My children need me\u2026  I can\u2019t go now\u2026"
       objectReference: {fileID: 0}
+    - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
+      propertyPath: ExamineSound.audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ca1cbf89c9ad05349b77f9071632b6d7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1209,6 +1215,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7271557693646580220, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       insertIndex: -1
       addedObject: {fileID: 43614313}
+    - targetCorrespondingSourceObject: {fileID: 7271557693646580220, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 43614320}
+    - targetCorrespondingSourceObject: {fileID: 7271557693646580220, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 43614319}
   m_SourcePrefab: {fileID: 100100000, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
 --- !u!1 &43614311 stripped
 GameObject:
@@ -1314,6 +1326,117 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!82 &43614319
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43614311}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: ca1cbf89c9ad05349b77f9071632b6d7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &43614320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43614311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7481b7d970930744e8b304a6a4b863fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReadPaper
+  paperAudioSource: {fileID: 43614319}
+  paperUI: {fileID: 1217932896}
 --- !u!4 &44207807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6884237437143102249, guid: e99962b1f9685594a819195566797440, type: 3}
@@ -1921,14 +2044,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: PaperText.GlocText
-      value: '*My daughter: Dad, I miss your love and guidance, especially today
-        at my graduation.Love, Your daughter'
+      value: '*My daughter: Daddy, I''m tired of waiting. Mom says you''re coming
+        back... tomorrow is my birthday, and you''re still not here'
       objectReference: {fileID: 0}
     - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: PaperText.NormalText
       value: 'My daughter: Dad, I miss your love and guidance, especially today at
         my graduation.Love, Your daughter'
       objectReference: {fileID: 0}
+    - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
+      propertyPath: ExamineSound.audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0710f1af8ca3f664f81586f9d47b95cc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -5026,7 +5153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5499828185949655384, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.4478
+      value: 5.462
       objectReference: {fileID: 0}
     - target: {fileID: 5499828185949655384, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5066,14 +5193,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: PaperText.GlocText
-      value: '*My Wife: Missing you, our memories, and the future we should have
-        shared together.Love always, Your wife'
+      value: '*My Wife: We miss you so much too, and that life is just too hard without
+        you here. Please come back'
       objectReference: {fileID: 0}
     - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: PaperText.NormalText
       value: 'My Wife: Missing you, our memories, and the future we should have shared
         together.Love always, Your wife'
       objectReference: {fileID: 0}
+    - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
+      propertyPath: ExamineSound.audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b5c7a297a3ac5a34bbd9064982fcd5ae, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -5997,6 +6128,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -0.049, y: -89.803, z: 14.102}
+--- !u!1 &408776433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 408776435}
+  - component: {fileID: 408776434}
+  m_Layer: 0
+  m_Name: GameObject_26
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &408776434
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408776433}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.37121582, y: 2.9324508, z: 15.926857}
+  m_Center: {x: -0.12649536, y: 0.9662254, z: -3.7011375}
+--- !u!4 &408776435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408776433}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -458.74817, y: 1.13967, z: -100.97822}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &417876056
 GameObject:
   m_ObjectHideFlags: 0
@@ -9425,7 +9609,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718319983}
   m_LocalRotation: {x: -0.0000000018626449, y: 0.999998, z: 0.0000000037252899, w: -0.001998454}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0054}
+  m_LocalPosition: {x: 0, y: 0, z: 0.008}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9433,7 +9617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180.229, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.007, y: 0.0267}
+  m_AnchoredPosition: {x: -0.009, y: 0.114}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &718319985
@@ -9456,7 +9640,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: My daugter born in 10/3/3
+  m_text: Daddy, I will hit you if you forget my birthday (10/3/3)! Come back fast,
+    I'm waiting
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 308e37db00d603e4caee79f2f02aad57, type: 2}
   m_sharedMaterial: {fileID: 5778986305574345032, guid: 308e37db00d603e4caee79f2f02aad57, type: 2}
@@ -9483,8 +9668,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10550,12 +10735,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: PaperText.GlocText
-      value: '*My daugter born in 10/3/3'
+      value: '*Daddy, I will hit you if you forget my birthday (10/3/3)! Come back
+        fast, I''m waiting'
       objectReference: {fileID: 0}
     - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: PaperText.NormalText
       value: My daugter born in 10/3/3
       objectReference: {fileID: 0}
+    - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
+      propertyPath: ExamineSound.audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 84df171585bde2a4fa3121251dddaa53, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -11861,7 +12051,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942451421}
   m_LocalRotation: {x: -0.0000000018626449, y: 0.999998, z: 0.0000000037252899, w: -0.001998454}
-  m_LocalPosition: {x: 0, y: 0, z: 0.005}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0042}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11869,7 +12059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180.229, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.007, y: 0.1516}
+  m_AnchoredPosition: {x: -0.0029, y: 0.1242}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &942451423
@@ -11892,7 +12082,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nI need to write my memories so I can\u2019t forget\u2026 forget what????"
+  m_text: "I still can\u2019t bring myself to say you're gone... I just can't accept
+    that you're never coming back. Life feels so empty and heavy without you."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 308e37db00d603e4caee79f2f02aad57, type: 2}
   m_sharedMaterial: {fileID: 5778986305574345032, guid: 308e37db00d603e4caee79f2f02aad57, type: 2}
@@ -11919,8 +12110,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14871,8 +15062,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'My daughter:
 
-    Dad, I miss your love and guidance, especially today
-    at my graduation.Love, Your daughter'
+    Daddy, I''m tired of waiting. Mom says you''re coming
+    back... tomorrow is my birthday, and you''re still not here'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 308e37db00d603e4caee79f2f02aad57, type: 2}
   m_sharedMaterial: {fileID: 5778986305574345032, guid: 308e37db00d603e4caee79f2f02aad57, type: 2}
@@ -14899,8 +15090,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15324,7 +15515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180.229, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.007, y: 0.107}
+  m_AnchoredPosition: {x: -0.014, y: 0.154}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1217932898
@@ -15347,7 +15538,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nMy children need me\u2026 \nI can\u2019t go now\u2026"
+  m_text: '
+
+    I miss you so, so much! When are you coming back? Today, Mom and
+    I made delicious cookies, and I really wished you were here to taste them with
+    us'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 308e37db00d603e4caee79f2f02aad57, type: 2}
   m_sharedMaterial: {fileID: 5778986305574345032, guid: 308e37db00d603e4caee79f2f02aad57, type: 2}
@@ -15374,8 +15569,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15716,8 +15911,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'My Wife:
 
-    Missing you, our memories, and the future we should have
-    shared together.Love always, Your wife'
+    We miss you so much too, and that life is just too hard
+    without you here. Please come back'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 308e37db00d603e4caee79f2f02aad57, type: 2}
   m_sharedMaterial: {fileID: 5778986305574345032, guid: 308e37db00d603e4caee79f2f02aad57, type: 2}
@@ -15744,8 +15939,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -17979,7 +18174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3163100447456763650, guid: 67b8c4f4e535b264eaeb9458a0dc1e0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.8274
+      value: 5.82
       objectReference: {fileID: 0}
     - target: {fileID: 3163100447456763650, guid: 67b8c4f4e535b264eaeb9458a0dc1e0f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21498,7 +21693,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5499828185949655384, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -465.735
+      value: -465.7395
       objectReference: {fileID: 0}
     - target: {fileID: 5499828185949655384, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21542,12 +21737,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: PaperText.GlocText
-      value: "*I need to write my memories so I can\u2019t forget\u2026 forget what????"
+      value: "*I still can\u2019t bring myself to say you're gone... I just can't
+        accept that you're never coming back. Life feels so empty and heavy without
+        you."
       objectReference: {fileID: 0}
     - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
       propertyPath: PaperText.NormalText
       value: "I need to write my memories so I can\u2019t forget\u2026 forget what????"
       objectReference: {fileID: 0}
+    - target: {fileID: 8521045759417509444, guid: 1be40a290ebd79b42b8c5faf0431c510, type: 3}
+      propertyPath: ExamineSound.audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d367cb9f47be514da00bf935774b4d7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -28535,13 +28736,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2009193134884549472, guid: babaca8713b82484a8ea07ead14c5384, type: 3}
+      propertyPath: m_Color.b
+      value: 0.63234246
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009193134884549472, guid: babaca8713b82484a8ea07ead14c5384, type: 3}
+      propertyPath: m_Color.g
+      value: 0.63234246
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009193134884549472, guid: babaca8713b82484a8ea07ead14c5384, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009193134884549472, guid: babaca8713b82484a8ea07ead14c5384, type: 3}
+      propertyPath: m_Intensity
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 4978910325813322465, guid: babaca8713b82484a8ea07ead14c5384, type: 3}
       propertyPath: m_LocalPosition.x
       value: -464.274
       objectReference: {fileID: 0}
     - target: {fileID: 4978910325813322465, guid: babaca8713b82484a8ea07ead14c5384, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.131
+      value: 1.143
       objectReference: {fileID: 0}
     - target: {fileID: 4978910325813322465, guid: babaca8713b82484a8ea07ead14c5384, type: 3}
       propertyPath: m_LocalPosition.z
@@ -28744,3 +28961,4 @@ SceneRoots:
   - {fileID: 1045736380}
   - {fileID: 1939290349}
   - {fileID: 399865491}
+  - {fileID: 408776435}
