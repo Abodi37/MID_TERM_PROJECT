@@ -29,5 +29,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/End1.unity
     guid: b48ca32fac3f50346aa0c9ef867dda28
+  - enabled: 1
+    path: Assets/Scenes/StayEnding.unity
+    guid: 579870d106f7142d08d26001491c40bd
+  - enabled: 1
+    path: Assets/Scenes/MoveOnEnding.unity
+    guid: 76ddf7e7560e4460faa88c29dfa243e7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
