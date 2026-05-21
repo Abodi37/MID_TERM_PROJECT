@@ -53,6 +53,6 @@ public class TypewriterEnding : MonoBehaviour
     public void LoadMainMenu()
     {
         // Replace "MainMenu" with the exact name of your main menu scene file
-        SceneManager.LoadScene("MainMenu"); 
+        SceneManager.LoadScene("main-1"); 
     }
 }
