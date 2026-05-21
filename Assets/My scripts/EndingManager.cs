@@ -35,13 +35,13 @@ public class EndingManager : MonoBehaviour
     // Connect this to your 'Stay with Memories' Button
     public void ChooseStayEnding()
     {
-        StartCoroutine(FadeAndLoadScene("Ending_Stay"));
+        StartCoroutine(FadeAndLoadScene("StayEnding"));
     }
 
     // Connect this to your 'Move On' Button
     public void ChooseMoveOnEnding()
     {
-        StartCoroutine(FadeAndLoadScene("Ending_MoveOn"));
+        StartCoroutine(FadeAndLoadScene("MoveOnEnding"));
     }
 
     IEnumerator FadeAndLoadScene(string sceneName)
