@@ -8,11 +8,8 @@ public class EndingManager : MonoBehaviour
     public GameObject endingChoicePanel;
     public CanvasGroup fadeScreenCanvasGroup; // Drag your FadeScreen Canvas Group here
 
-    [Header("Player Tracking")]
-    public PlayerStats playerStats; 
-
     [Header("Fade Settings")]
-    public float fadeDuration = 2f; // How many seconds the fade to black takes
+    public float fadeDuration = 2f; // How many seconds the fade takes
 
     void Start()
     {
@@ -26,10 +23,10 @@ public class EndingManager : MonoBehaviour
         {
             endingChoicePanel.SetActive(true);
             
-            // Freeze movement but keep Time.timeScale at 1 so UI animations and Coroutines can run
-            if (playerStats != null) playerStats.isDead = true; 
+            // 1. FREEZE EVERYTHING: Stops player movement, enemy AI, animations, and physics instantly!
+            Time.timeScale = 0f; 
             
-            // Unlock mouse cursor so they can select an ending choice
+            // 2. Unlock mouse cursor so they can select an ending choice
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
@@ -38,36 +35,39 @@ public class EndingManager : MonoBehaviour
     // Connect this to your 'Stay with Memories' Button
     public void ChooseStayEnding()
     {
-        StartCoroutine(FadeAndLoadScene("StayEnding"));
+        StartCoroutine(FadeAndLoadScene("Ending_Stay"));
     }
 
     // Connect this to your 'Move On' Button
     public void ChooseMoveOnEnding()
     {
-        StartCoroutine(FadeAndLoadScene("MoveOnEnding"));
+        StartCoroutine(FadeAndLoadScene("Ending_MoveOn"));
     }
 
     IEnumerator FadeAndLoadScene(string sceneName)
     {
-        // 1. Hide the choice buttons so the screen feels clean during the fade
+        // Hide the choice buttons so the screen feels clean during the fade
         if (endingChoicePanel != null) endingChoicePanel.SetActive(false);
         
-        // 2. Turn on the fade screen object
+        // Turn on the fade screen object
         if (fadeScreenCanvasGroup != null)
         {
             fadeScreenCanvasGroup.gameObject.SetActive(true);
             float timer = 0;
 
-            // 3. Smoothly fade the black image alpha from 0 to 1
+            // Smoothly fade the black image alpha from 0 to 1
             while (timer < fadeDuration)
             {
-                timer += Time.deltaTime;
+                // CRUCIAL CHANGE: Using unscaledDeltaTime allows this loop to run 
+                // perfectly even though Time.timeScale is completely at 0!
+                timer += Time.unscaledDeltaTime; 
                 fadeScreenCanvasGroup.alpha = Mathf.Lerp(0f, 1f, timer / fadeDuration);
-                yield return null; // Wait for the next frame
+                yield return null; 
             }
         }
 
-        // 4. Load the typewriter scene after the screen is completely pitch black
+        // 3. RESET TIME MATRIX: Always unfreeze time right before loading a new scene!
+        Time.timeScale = 1f; 
         SceneManager.LoadScene(sceneName);
     }
 }
