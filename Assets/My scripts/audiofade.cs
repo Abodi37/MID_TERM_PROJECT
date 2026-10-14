@@ -5,8 +5,8 @@ using System.Collections;
 public class AudioFadeIn : MonoBehaviour
 {
     [Header("Fade Settings")]
-    public float fadeDuration = 3f; // ßã ËÇäíÉ íÓÊÛÑŞ ÇáÕæÊ áíÕá áÃÚáì ŞæÉ¿
-    public float targetVolume = 1f; // ÃÚáì ãÓÊæì ÊÈÛì ÇáÕæÊ íæÕá áå (ãä 0 Åáì 1)
+    public float fadeDuration = 3f; // ÙƒÙ… Ø«Ø§Ù†ÙŠØ© ÙŠØ³ØªØºØ±Ù‚ Ø§Ù„ØµÙˆØª Ù„ÙŠØµÙ„ Ù„Ø£Ø¹Ù„Ù‰ Ù‚ÙˆØ©ØŸ
+    public float targetVolume = 1f; // Ø£Ø¹Ù„Ù‰ Ù…Ø³ØªÙˆÙ‰ ØªØ¨ØºÙ‰ Ø§Ù„ØµÙˆØª ÙŠÙˆØµÙ„ Ù„Ù‡ (Ù…Ù† 0 Ø¥Ù„Ù‰ 1)
 
     private AudioSource audioSource;
 
@@ -14,10 +14,10 @@ public class AudioFadeIn : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        // äÈÏÃ ÈÇáÕæÊ ÕİÑ ÊãÇãÇğ
+        // Ù†Ø¨Ø¯Ø£ Ø¨Ø§Ù„ØµÙˆØª ØµÙØ± ØªÙ…Ø§Ù…Ø§Ù‹
         audioSource.volume = 0f;
 
-        // ÊÔÛíá ÇáßæÑæÊíä ÇáãÓÄæá Úä ÑİÚ ÇáÕæÊ ÈÇáÊÏÑíÌ
+        // ØªØ´ØºÙŠÙ„ Ø§Ù„ÙƒÙˆØ±ÙˆØªÙŠÙ† Ø§Ù„Ù…Ø³Ø¤ÙˆÙ„ Ø¹Ù† Ø±ÙØ¹ Ø§Ù„ØµÙˆØª Ø¨Ø§Ù„ØªØ¯Ø±ÙŠØ¬
         StartCoroutine(FadeInRoutine());
     }
 
@@ -28,12 +28,12 @@ public class AudioFadeIn : MonoBehaviour
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
-            // ÑİÚ ÇáÕæÊ ÊÏÑíÌíÇğ ÈäÇÁğ Úáì ÇáæŞÊ
+            // Ø±ÙØ¹ Ø§Ù„ØµÙˆØª ØªØ¯Ø±ÙŠØ¬ÙŠØ§Ù‹ Ø¨Ù†Ø§Ø¡Ù‹ Ø¹Ù„Ù‰ Ø§Ù„ÙˆÙ‚Øª
             audioSource.volume = Mathf.Lerp(0f, targetVolume, timer / fadeDuration);
             yield return null;
         }
 
-        // ÇáÊÃßíÏ Úáì ËÈÇÊ ÇáÕæÊ ÚäÏ ÇáŞíãÉ ÇáãØáæÈÉ İí ÇáäåÇíÉ
+        // Ø§Ù„ØªØ£ÙƒÙŠØ¯ Ø¹Ù„Ù‰ Ø«Ø¨Ø§Øª Ø§Ù„ØµÙˆØª Ø¹Ù†Ø¯ Ø§Ù„Ù‚ÙŠÙ…Ø© Ø§Ù„Ù…Ø·Ù„ÙˆØ¨Ø© ÙÙŠ Ø§Ù„Ù†Ù‡Ø§ÙŠØ©
         audioSource.volume = targetVolume;
     }
 }

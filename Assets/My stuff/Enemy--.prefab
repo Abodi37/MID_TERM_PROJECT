@@ -405,6 +405,11 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   deathEffect: {fileID: 2787556212050310887, guid: 57970c6bb711ec24b8d98424b1806f3b, type: 3}
   attackSound: {fileID: 4762692466009894235}
+  ambientSound: {fileID: 4189800224819641}
+  hitPlayerClips:
+  - {fileID: 8300000, guid: 1187bd578c7b24e4a94c3c4d903179c9, type: 3}
+  - {fileID: 8300000, guid: 58e967ee88b6a4147bbb8a17129b0b5b, type: 3}
+  - {fileID: 8300000, guid: e39a40e6f46930c4b9d2ad791bdbede8, type: 3}
 --- !u!82 &4762692466009894235
 AudioSource:
   m_ObjectHideFlags: 0

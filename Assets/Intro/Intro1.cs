@@ -5,33 +5,75 @@ using UnityEngine.SceneManagement;
 public class IntroController : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
-    public GameObject pressAnyKeyUI; // ÇÓÍÈ äÕ "ÇÖÛØ Ãí ÒÑ" åäÇ
+    public GameObject pressAnyKeyUI; // Ø§Ø³Ø­Ø¨ Ù†Øµ "Ø§Ø¶ØºØ· Ø£ÙŠ Ø²Ø±" Ù‡Ù†Ø§
     private bool videoHasFinished = false;
+
+    [Tooltip("Ø§Ù„Ù…Ø´Ù‡Ø¯ Ø§Ù„Ù„ÙŠ ÙŠÙ†ÙØªØ­ Ø¨Ø¹Ø¯ Ø§Ù„Ù…Ù‚Ø¯Ù…Ø©")]
+    public string nextSceneName = "SampleScene";
+    [Tooltip("Ø²Ø± ØªØ®Ø·ÙŠ Ø§Ù„Ù…Ù‚Ø¯Ù…Ø©")]
+    public KeyCode skipKey = KeyCode.Escape;
 
     void Start()
     {
-        // ÅÎİÇÁ äÕ "ÇÖÛØ Ãí ÒÑ" İí ÇáÈÏÇíÉ
+        // Ø¥Ø®ÙØ§Ø¡ Ù†Øµ "Ø§Ø¶ØºØ· Ø£ÙŠ Ø²Ø±" ÙÙŠ Ø§Ù„Ø¨Ø¯Ø§ÙŠØ©
         if (pressAnyKeyUI != null) pressAnyKeyUI.SetActive(false);
 
-        // äÑÈØ ÇáßæÏ ÈÍÏË ÇäÊåÇÁ ÇáİíÏíæ
+        if (videoPlayer == null)
+        {
+            // Ù…Ø§ ÙÙŠÙ‡ ÙÙŠØ¯ÙŠÙˆØŒ Ù†Ø¹ØªØ¨Ø± Ø§Ù„Ù…Ù‚Ø¯Ù…Ø© Ø®Ù„ØµØª
+            OnVideoEnd(null);
+            return;
+        }
+
+        // Ù†Ø±Ø¨Ø· Ø§Ù„ÙƒÙˆØ¯ Ø¨Ø­Ø¯Ø« Ø§Ù†ØªÙ‡Ø§Ø¡ Ø§Ù„ÙÙŠØ¯ÙŠÙˆ
         videoPlayer.loopPointReached += OnVideoEnd;
+
+        // Ù„Ùˆ Ø§Ù„ÙÙŠØ¯ÙŠÙˆ Ù…Ø§ Ø§Ø´ØªØºÙ„ (Ù…Ù„Ù Ù†Ø§Ù‚Øµ Ù…Ø«Ù„Ø§Ù‹) Ù„Ø§ Ù†Ø¹Ù„Ù‚ Ø§Ù„Ù„Ø§Ø¹Ø¨ ÙÙŠ Ø´Ø§Ø´Ø© Ø³ÙˆØ¯Ø§Ø¡
+        videoPlayer.errorReceived += OnVideoError;
     }
 
     void OnVideoEnd(VideoPlayer vp)
     {
         videoHasFinished = true;
 
-        // ÅÙåÇÑ ÇáäÕ ÚäÏ ÇäÊåÇÁ ÇáİíÏíæ
+        // Ø¥Ø¸Ù‡Ø§Ø± Ø§Ù„Ù†Øµ Ø¹Ù†Ø¯ Ø§Ù†ØªÙ‡Ø§Ø¡ Ø§Ù„ÙÙŠØ¯ÙŠÙˆ
         if (pressAnyKeyUI != null) pressAnyKeyUI.SetActive(true);
+    }
+
+    void OnVideoError(VideoPlayer vp, string message)
+    {
+        Debug.LogWarning("Intro video failed: " + message);
+        OnVideoEnd(vp);
     }
 
     void Update()
     {
-        // ÅĞÇ ÇäÊåì ÇáİíÏíæ æÖÛØ ÇáãÓÊÎÏã Ãí ÒÑ¡ ÇäÊŞá ááãÔåÏ ÇáÊÇáí
+        // ØªØ®Ø·ÙŠ Ø§Ù„Ù…Ù‚Ø¯Ù…Ø© ÙÙŠ Ø£ÙŠ ÙˆÙ‚Øª
+        if (Input.GetKeyDown(skipKey))
+        {
+            LoadNextScene();
+            return;
+        }
+
+        // Ø¥Ø°Ø§ Ø§Ù†ØªÙ‡Ù‰ Ø§Ù„ÙÙŠØ¯ÙŠÙˆ ÙˆØ¶ØºØ· Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… Ø£ÙŠ Ø²Ø±ØŒ Ø§Ù†ØªÙ‚Ù„ Ù„Ù„Ù…Ø´Ù‡Ø¯ Ø§Ù„ØªØ§Ù„ÙŠ
         if (videoHasFinished && Input.anyKeyDown)
         {
-            // ÇÓÊÈÏá "MainMenu" ÈÇÓã ÇáãÔåÏ ÇáĞí ÊÑíÏ ÇáÇäÊŞÇá Åáíå
-            SceneManager.LoadScene("SampleScene");
+            LoadNextScene();
+        }
+    }
+
+    void LoadNextScene()
+    {
+        enabled = false; // Ø¹Ø´Ø§Ù† Ù…Ø§ ÙŠÙ†Ø·Ù„Ø¨ ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ù…Ø´Ù‡Ø¯ Ù…Ø±ØªÙŠÙ†
+        SceneManager.LoadScene(nextSceneName);
+    }
+
+    void OnDestroy()
+    {
+        if (videoPlayer != null)
+        {
+            videoPlayer.loopPointReached -= OnVideoEnd;
+            videoPlayer.errorReceived -= OnVideoError;
         }
     }
 }

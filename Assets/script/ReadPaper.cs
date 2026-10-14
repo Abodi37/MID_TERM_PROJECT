@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class ReadPaper : MonoBehaviour
 {
-    // ãÑÌÚ áãßæä ÇáÕæÊ
+    // Ù…Ø±Ø¬Ø¹ Ù„Ù…ÙƒÙˆÙ† Ø§Ù„ØµÙˆØª
     [SerializeField] private AudioSource paperAudioSource;
 
-    // ãÑÌÚ áæÇÌåÉ ÇáÑÓÇáÉ (ÇáÜ Canvas Ãæ ÇáÜ GameObject ÇáÎÇÕ ÈÇáæÑŞÉ)
+    // Ù…Ø±Ø¬Ø¹ Ù„ÙˆØ§Ø¬Ù‡Ø© Ø§Ù„Ø±Ø³Ø§Ù„Ø© (Ø§Ù„Ù€ Canvas Ø£Ùˆ Ø§Ù„Ù€ GameObject Ø§Ù„Ø®Ø§Øµ Ø¨Ø§Ù„ÙˆØ±Ù‚Ø©)
     [SerializeField] private GameObject paperUI;
 
     public void OpenPaper()
     {
-        // 1. ÅÙåÇÑ ÇáÑÓÇáÉ ááãáÇÚÈ
+        // 1. Ø¥Ø¸Ù‡Ø§Ø± Ø§Ù„Ø±Ø³Ø§Ù„Ø© Ù„Ù„Ù…Ù„Ø§Ø¹Ø¨
         paperUI.SetActive(true);
 
-        // 2. ÇáÊÍŞŞ ãä æÌæÏ ÇáÕæÊ æÊÔÛíáå
+        // 2. Ø§Ù„ØªØ­Ù‚Ù‚ Ù…Ù† ÙˆØ¬ÙˆØ¯ Ø§Ù„ØµÙˆØª ÙˆØªØ´ØºÙŠÙ„Ù‡
         if (paperAudioSource != null)
         {
             paperAudioSource.Play();
@@ -24,7 +24,7 @@ public class ReadPaper : MonoBehaviour
     {
         paperUI.SetActive(false);
 
-        // ÇÎÊíÇÑí: ÅíŞÇİ ÇáÕæÊ ÅĞÇ ÃÛáŞ ÇááÇÚÈ ÇáÑÓÇáÉ İÌÃÉ
+        // Ø§Ø®ØªÙŠØ§Ø±ÙŠ: Ø¥ÙŠÙ‚Ø§Ù Ø§Ù„ØµÙˆØª Ø¥Ø°Ø§ Ø£ØºÙ„Ù‚ Ø§Ù„Ù„Ø§Ø¹Ø¨ Ø§Ù„Ø±Ø³Ø§Ù„Ø© ÙØ¬Ø£Ø©
         if (paperAudioSource != null && paperAudioSource.isPlaying)
         {
             paperAudioSource.Stop();

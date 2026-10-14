@@ -11,106 +11,109 @@ public class PlayerInteraction : MonoBehaviour
 
     public PlayerStats playerStats;
 
+    [Header("Pickups")]
+    [Tooltip("Objects with one of these tags go into the inventory. The tag is also the item name.")]
+    public string[] inventoryItemTags = { "Battery", "Pill", "Key", "Fuse" };
+    [Tooltip("Optional: text that says what you're looking at, e.g. \"Press E to pick up Battery\"")]
+    public TextMeshProUGUI promptText;
+    [Tooltip("Optional: sound played when something is picked up")]
+    public AudioClip pickupSound;
+
+    const string FlashlightTag = "FlashlightItem";
+
     void Update()
     {
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, transform.forward, out hit, interactRange))
+        // No interacting while paused or dead
+        if (Time.timeScale == 0f || (playerStats != null && playerStats.isDead))
         {
-            // Battery
-            if (hit.collider.CompareTag("Battery"))
-            {
-                interactUI.SetActive(true);
+            ShowPrompt(null);
+            return;
+        }
 
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    flashlightScript.inventoryManager.AddItem("Battery");
+        RaycastHit hit;
+        if (!Physics.Raycast(transform.position, transform.forward, out hit, interactRange))
+        {
+            ShowPrompt(null);
+            return;
+        }
 
-                    Destroy(hit.collider.gameObject);
+        GameObject target = hit.collider.gameObject;
 
-                    interactUI.SetActive(false);
-                }
-            }
-
-            // Pill
-            else if (hit.collider.CompareTag("Pill"))
-            {
-                interactUI.SetActive(true);
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    flashlightScript.inventoryManager.AddItem("Pill");
-
-                    Destroy(hit.collider.gameObject);
-
-                    interactUI.SetActive(false);
-                }
-            }
-
-            // Key
-            else if (hit.collider.CompareTag("Key"))
-            {
-                interactUI.SetActive(true);
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    flashlightScript.inventoryManager.AddItem("Key");
-
-                    Destroy(hit.collider.gameObject);
-
-                    interactUI.SetActive(false);
-                }
-            }
-
-            // Fuse
-            else if (hit.collider.CompareTag("Fuse"))
-            {
-                interactUI.SetActive(true);
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    flashlightScript.inventoryManager.AddItem("Fuse");
-
-                    Destroy(hit.collider.gameObject);
-
-                    interactUI.SetActive(false);
-                }
-            }
-            else if (hit.collider.CompareTag("FlashlightItem"))
-            {
-                interactUI.SetActive(true);
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    if (flashlightScript != null)
-                    {
-                        // 1. Unlock the safety variables inside the master script
-                        flashlightScript.hasPickedUpFromTable = true;
-                        flashlightScript.batteryLevel = 100f;
-
-                        // 2. Explicitly turn on the hand model object linked in your inspector
-                        if (flashlightScript.handsFlashlightObject != null)
-                        {
-                            flashlightScript.handsFlashlightObject.SetActive(true);
-                        }
-                        flashlightScript.TriggerTutorial();
-                    }
-
-                    // 3. Remove the object off the table
-                    Destroy(hit.collider.gameObject);
-                    interactUI.SetActive(false);
-                }
-            }
-
-            else
-            {
-                interactUI.SetActive(false);
-            }
+        // Flashlight on the table
+        if (target.CompareTag(FlashlightTag))
+        {
+            ShowPrompt("Press 'E' to pick up Flashlight");
+            if (Input.GetKeyDown(KeyCode.E)) PickUpFlashlight(target);
+        }
+        // Battery, Pill, Key, Fuse...
+        else if (IsInventoryItem(target))
+        {
+            ShowPrompt("Press 'E' to pick up " + target.tag);
+            if (Input.GetKeyDown(KeyCode.E)) PickUpItem(target, target.tag);
         }
         else
         {
-            interactUI.SetActive(false);
+            ShowPrompt(null);
+        }
+    }
+
+    bool IsInventoryItem(GameObject target)
+    {
+        foreach (string itemTag in inventoryItemTags)
+        {
+            if (target.CompareTag(itemTag)) return true;
+        }
+        return false;
+    }
+
+    void PickUpItem(GameObject item, string itemName)
+    {
+        if (flashlightScript == null || flashlightScript.inventoryManager == null) return;
+
+        flashlightScript.inventoryManager.AddItem(itemName);
+        RemovePickup(item);
+    }
+
+    void PickUpFlashlight(GameObject flashlightOnTable)
+    {
+        if (flashlightScript != null)
+        {
+            // 1. Unlock the safety variables inside the master script
+            flashlightScript.hasPickedUpFromTable = true;
+            flashlightScript.batteryLevel = 100f;
+
+            // 2. Explicitly turn on the hand model object linked in your inspector
+            if (flashlightScript.handsFlashlightObject != null)
+            {
+                flashlightScript.handsFlashlightObject.SetActive(true);
+            }
+            flashlightScript.TriggerTutorial();
+        }
+
+        // 3. Remove the object off the table
+        RemovePickup(flashlightOnTable);
+    }
+
+    void RemovePickup(GameObject item)
+    {
+        if (pickupSound != null) AudioSource.PlayClipAtPoint(pickupSound, item.transform.position);
+
+        // Deactivate right away: Destroy() only happens at the end of the frame, and until then
+        // other pickup scripts on the same object (BatteryPickup, HealPickup) could add it a second time
+        item.SetActive(false);
+        Destroy(item);
+        ShowPrompt(null);
+    }
+
+    void ShowPrompt(string message)
+    {
+        bool show = message != null;
+        if (interactUI != null && interactUI.activeSelf != show) interactUI.SetActive(show);
+
+        if (promptText != null)
+        {
+            promptText.gameObject.SetActive(show);
+            if (show) promptText.text = message;
         }
     }
 }
-

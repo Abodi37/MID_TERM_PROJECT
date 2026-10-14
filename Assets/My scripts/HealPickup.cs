@@ -18,6 +18,7 @@ public class HealPickup : MonoBehaviour
             {
                 player.inventoryManager.AddItem("Pill");
 
+                gameObject.SetActive(false); // so nothing else can pick it up again before Destroy happens
                 Destroy(gameObject);
             }
         }

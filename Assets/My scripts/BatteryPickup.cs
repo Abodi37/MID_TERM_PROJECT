@@ -8,20 +8,26 @@ public class BatteryPickup : MonoBehaviour
 
     void Update()
     {
-        // åĞÇ ÇáÓØÑ íÖãä Ãäå áæ ÖÛØ E æåæ ŞÑíÈ ãä ÇáßæáÇíÏÑ ÊÔÊÛá
+        // Ù‡Ø°Ø§ Ø§Ù„Ø³Ø·Ø± ÙŠØ¶Ù…Ù† Ø£Ù†Ù‡ Ù„Ùˆ Ø¶ØºØ· E ÙˆÙ‡Ùˆ Ù‚Ø±ÙŠØ¨ Ù…Ù† Ø§Ù„ÙƒÙˆÙ„Ø§ÙŠØ¯Ø± ØªØ´ØªØºÙ„
         if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
         {
             InteractWithObject();
         }
     }
 
-    // ÇáÏÇáÉ ÇáÓÍÑíÉ ÇáãİÊæÍÉ ááÍÒãÉ (Public)
+    // Ø§Ù„Ø¯Ø§Ù„Ø© Ø§Ù„Ø³Ø­Ø±ÙŠØ© Ø§Ù„Ù…ÙØªÙˆØ­Ø© Ù„Ù„Ø­Ø²Ù…Ø© (Public)
     public void InteractWithObject()
     {
-        FlashlightAttack player = FindFirstObjectByType<FlashlightAttack>();
+        // Already picked up this frame by another script (PlayerInteraction / UHFPS)
+        if (!gameObject.activeInHierarchy) return;
+
+        // Include inactive: the flashlight object is switched off until the player finds it,
+        // and batteries should still be collectable before that
+        FlashlightAttack player = FindFirstObjectByType<FlashlightAttack>(FindObjectsInactive.Include);
         if (player != null)
         {
             player.inventoryManager.AddItem("Battery");
+            gameObject.SetActive(false); // so nothing else can pick it up again before Destroy happens
             Destroy(gameObject);
         }
     }
