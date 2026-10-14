@@ -3379,6 +3379,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5014189637477452488, guid: a9a3955aa3afbc644844e779afe28c2c, type: 3}
+      propertyPath: UseInteract
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5014189637477452491, guid: a9a3955aa3afbc644844e779afe28c2c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -448.137
@@ -11167,7 +11171,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5014189637477452488, guid: a9a3955aa3afbc644844e779afe28c2c, type: 3}
       propertyPath: UseInteract
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5014189637477452488, guid: a9a3955aa3afbc644844e779afe28c2c, type: 3}
       propertyPath: OnAllFusesConnected.m_PersistentCalls.m_Calls.Array.size
@@ -25120,12 +25124,12 @@ MonoBehaviour:
   - {fileID: 1293996997}
   enemyPrefab: {fileID: 9203175648579947927, guid: cfb00caafefe94faa85f0d3491aaad59, type: 3}
   activeEnemies: []
-  spawnInterval: 40
+  spawnInterval: 52
   maxActiveEnemies: 3
   minSpawnDistance: 8
   waitForFlashlight: 1
   spawnIntervalMultiplier: 0.9
-  minSpawnInterval: 15
+  minSpawnInterval: 19.5
 --- !u!4 &1791827164
 Transform:
   m_ObjectHideFlags: 0
@@ -28543,6 +28547,7 @@ GameObject:
   - component: {fileID: 2060917805}
   - component: {fileID: 2060917804}
   - component: {fileID: 2060917803}
+  - component: {fileID: 2060917806}
   m_Layer: 0
   m_Name: InventoryManager
   m_TagString: Untagged
@@ -28595,6 +28600,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2060917806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060917802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b434047b6a4907a2ae32c0968e75b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryBridge
+  inventoryManager: {fileID: 2060917804}
+  links:
+  - ourItem: Battery
+    uhfpsTitle: Alkaline Battery
+    matchTitleStart: 0
+    syncBothWays: 1
+  - ourItem: Fuse
+    uhfpsTitle: Fuse
+    matchTitleStart: 0
+    syncBothWays: 1
+  - ourItem: Key
+    uhfpsTitle: Key
+    matchTitleStart: 1
+    syncBothWays: 0
+  blockUhfpsInventoryKey: 1
 --- !u!1 &2061857183
 GameObject:
   m_ObjectHideFlags: 0
