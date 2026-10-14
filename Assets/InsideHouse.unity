@@ -919,6 +919,11 @@ MonoBehaviour:
   baseSanityDrop: 2
   sanityRegenRate: 2
   damageRateAtZeroSanity: 3.5
+  sanityDrainRadius: 12
+  closeGhostMultiplier: 3
+  farGhostMultiplier: 0.25
+  healAmount: 100
+  lowHealthThreshold: 30
   healthBarImage: {fileID: 323748085}
   sanityBarImage: {fileID: 1756786730}
   healPromptUI: {fileID: 204732566}
@@ -927,6 +932,7 @@ MonoBehaviour:
   virtualCamera: {fileID: 934837030}
   inventoryManager: {fileID: 2060917804}
   enemyManager: {fileID: 1791827163}
+  enableHorrorEffects: 1
 --- !u!114 &38584007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5013,6 +5019,66 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &350011531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 350011533}
+  - component: {fileID: 350011532}
+  m_Layer: 0
+  m_Name: Area Title
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &350011532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350011531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95be73b398a142f18ef46176393d71ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AreaTitle
+  title: The Mansion
+  chapter: Chapter II
+  titleFont: {fileID: 11400000, guid: 11e1b4f3960b8684fb51ee0255f4c5b1, type: 2}
+  chapterFont: {fileID: 11400000, guid: 21f77838f09d3634daff953a9cf314e1, type: 2}
+  titleSize: 120
+  chapterSize: 26
+  textColor: {r: 0.93, g: 0.89, b: 0.82, a: 1}
+  verticalOffset: 60
+  startDelay: 1.5
+  letterFadeTime: 0.9
+  letterDelay: 0.09
+  holdTime: 2.5
+  fadeOutTime: 1.8
+  appearSound: {fileID: 0}
+  soundVolume: 0.7
+  onlyOncePerSession: 1
+--- !u!4 &350011533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350011531}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &353171339
 GameObject:
   m_ObjectHideFlags: 0
@@ -9141,6 +9207,13 @@ MonoBehaviour:
   interactUI: {fileID: 489713826}
   flashlightScript: {fileID: 1602003311}
   playerStats: {fileID: 38583998}
+  inventoryItemTags:
+  - Battery
+  - Pill
+  - Key
+  - Fuse
+  promptText: {fileID: 0}
+  pickupSound: {fileID: 0}
 --- !u!1 &666760054
 GameObject:
   m_ObjectHideFlags: 0
@@ -21746,6 +21819,9 @@ MonoBehaviour:
   normalAngle: 70
   damagePerSecond: 60
   range: 10
+  attackRadius: 0.35
+  lowBatteryThreshold: 20
+  lowBatteryFlicker: 0.7
   FlashlightIcon: {fileID: 662136839}
   batteryBarImage: {fileID: 1545598399}
   promptText: {fileID: 1052847516}
@@ -25045,6 +25121,11 @@ MonoBehaviour:
   enemyPrefab: {fileID: 9203175648579947927, guid: cfb00caafefe94faa85f0d3491aaad59, type: 3}
   activeEnemies: []
   spawnInterval: 40
+  maxActiveEnemies: 3
+  minSpawnDistance: 8
+  waitForFlashlight: 1
+  spawnIntervalMultiplier: 0.9
+  minSpawnInterval: 15
 --- !u!4 &1791827164
 Transform:
   m_ObjectHideFlags: 0
@@ -29866,3 +29947,4 @@ SceneRoots:
   - {fileID: 1000544060}
   - {fileID: 593791645}
   - {fileID: 1728498073}
+  - {fileID: 350011533}
