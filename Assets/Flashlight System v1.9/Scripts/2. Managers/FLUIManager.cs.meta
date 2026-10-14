@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 76ee96d30adcb6e439af3a3937b57410
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 158179
+  packageName: Flashlight System Realistic
+  packageVersion: 1.9
+  assetPath: Assets/Flashlight System v1.9/Scripts/2. Managers/FLUIManager.cs
+  uploadId: 815212

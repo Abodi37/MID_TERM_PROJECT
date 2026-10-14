@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 6138d9592e72f8e478ad8e92a4627d4c
+timeCreated: 1540486748
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 158179
+  packageName: Flashlight System Realistic
+  packageVersion: 1.9
+  assetPath: Assets/Flashlight System v1.9/Art/Materials/M_Small_Flashlight.mat
+  uploadId: 815212

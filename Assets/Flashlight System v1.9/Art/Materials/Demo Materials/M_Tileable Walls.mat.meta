@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e3afd3f13bed53c448eaa979f23dbcb7
+timeCreated: 1560961675
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 158179
+  packageName: Flashlight System Realistic
+  packageVersion: 1.9
+  assetPath: Assets/Flashlight System v1.9/Art/Materials/Demo Materials/M_Tileable
+    Walls.mat
+  uploadId: 815212
