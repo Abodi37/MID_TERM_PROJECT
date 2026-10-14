@@ -21,6 +21,10 @@ public class BatteryPickup : MonoBehaviour
         // Already picked up this frame by another script (PlayerInteraction / UHFPS)
         if (!gameObject.activeInHierarchy) return;
 
+        // This battery is also a UHFPS item: UHFPS adds it, and InventoryBridge copies it
+        // into our inventory. Adding it here as well would count it twice.
+        if (GetComponentInParent<UHFPS.Runtime.InteractableItem>() != null) return;
+
         // Include inactive: the flashlight object is switched off until the player finds it,
         // and batteries should still be collectable before that
         FlashlightAttack player = FindFirstObjectByType<FlashlightAttack>(FindObjectsInactive.Include);

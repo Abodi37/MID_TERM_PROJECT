@@ -308,7 +308,7 @@ MonoBehaviour:
     openSpeed: 10
     damper: 1
     dragSoundPlay: 0.2
-    flipOpenDirection: 1
+    flipOpenDirection: 0
     bothSidesOpen: 0
     dragSounds: 0
     playCloseSound: 1

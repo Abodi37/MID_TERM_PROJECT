@@ -61,6 +61,25 @@ public class InventoryManager : MonoBehaviour
         return 0;
     }
 
+    // Used by InventoryBridge to keep this inventory in sync with the UHFPS one
+    public void SetItemCount(string itemName, int count)
+    {
+        InventoryItem existingItem = inventory.FirstOrDefault(item => item.itemName == itemName);
+
+        if (count <= 0)
+        {
+            if (existingItem != null) inventory.Remove(existingItem);
+        }
+        else if (existingItem != null)
+        {
+            existingItem.quantity = count;
+        }
+        else
+        {
+            inventory.Add(new InventoryItem { itemName = itemName, quantity = count });
+        }
+    }
+
     public bool HasItem(string itemName)
     {
         InventoryItem existingItem = inventory.FirstOrDefault(item => item.itemName == itemName);

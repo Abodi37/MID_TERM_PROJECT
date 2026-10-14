@@ -39,6 +39,15 @@ public class PlayerInteraction : MonoBehaviour
 
         GameObject target = hit.collider.gameObject;
 
+        // UHFPS items (fuses, keys...) are picked up by UHFPS itself, so its puzzles and objectives
+        // see them. InventoryBridge copies them into our inventory. Taking them here too would
+        // hide them from the fusebox and the locked doors.
+        if (target.GetComponentInParent<UHFPS.Runtime.InteractableItem>() != null)
+        {
+            ShowPrompt(null);
+            return;
+        }
+
         // Flashlight on the table
         if (target.CompareTag(FlashlightTag))
         {
